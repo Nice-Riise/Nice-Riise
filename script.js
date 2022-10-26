@@ -34,12 +34,12 @@ function onClick(element) {
     var btnText = document.getElementById("myBtn");
   
     if (dots.style.display === "none") {
-      dots.style.display = "inline";
-      btnText.innerHTML = "Read more"; 
+      dots.style.display = "none";
+      btnText.innerHTML = "Load More"; 
       moreText.style.display = "none";
     } else {
       dots.style.display = "none";
-      btnText.innerHTML = "Read less"; 
+      btnText.innerHTML = "Load Less"; 
       moreText.style.display = "inline";
     }
   }
