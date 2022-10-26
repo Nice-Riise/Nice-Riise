@@ -34,7 +34,7 @@ function onClick(element) {
     var btnText = document.getElementById("myBtn");
   
     if (dots.style.display === "none") {
-      dots.style.display = "none";
+      dots.style.display = "inline";
       btnText.innerHTML = "Load More"; 
       moreText.style.display = "none";
     } else {
