@@ -192,6 +192,8 @@ body, html {
   <p class="w3-center"><em>Here are some of my knowledge.<br> Click on the images to make them bigger</em></p><br>
 
   <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
+ <div>
+
   <div class="w3-row-padding w3-center">
     <div class="w3-col m3">
       <img src="https://github.com/Nice-Riise/nice-riise.github.io/blob/main/pic/jobbTRD.jpeg?raw=true" style="border-radius: 50%; width: 140px; height: 140px;" onclick="onClick(this)" class="w3-hover-opacity" alt="Me at drilling work">
@@ -228,7 +230,26 @@ body, html {
     <div class="w3-col m3">
       <img src="https://github.com/Nice-Riise/nice-riise.github.io/blob/main/pic/IMG_2286.JPG?raw=true" style="border-radius: 50%; width: 140px; height: 140px;" onclick="onClick(this)" class="w3-hover-opacity" alt="core penetration test prog">
     </div>
-    <button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px" onclick="myFunction()" id="myBtn"> LOAD Hobbies </button>
+
+    <span id="dots">...</span><span id="more">
+
+      <div class="w3-col m3">
+        <img src="https://github.com/Nice-Riise/nice-riise.github.io/blob/main/pic/sykkelSandefjord.JPG?raw=true" style="border-radius: 50%; width: 140px; height: 140px;" onclick="onClick(this)" class="w3-hover-opacity" alt="core penetration test prog">
+      </div>
+
+
+
+
+    </span>
+  
+
+
+
+
+
+  
+
+    <button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px" onclick="myFunction()" id="myBtn"> LOAD MY Hobbies </button>
     
    <style>#more {display: none;}</style> 
 
@@ -236,7 +257,7 @@ body, html {
 </div>
 
 <!-- Modal for full size images on click-->
-<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='">
   <span class="w3-button w3-large w3-black w3-display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
   <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
     <img id="img01" class="w3-image">
