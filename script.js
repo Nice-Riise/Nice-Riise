@@ -35,11 +35,11 @@ function onClick(element) {
   
     if (dots.style.display === "none") {
       dots.style.display = "inline";
-      btnText.innerHTML = "Load More"; 
+      btnText.innerHTML = "Open Hobies"; 
       moreText.style.display = "none";
     } else {
       dots.style.display = "none";
-      btnText.innerHTML = "Load Less"; 
+      btnText.innerHTML = "Close Hobies"; 
       moreText.style.display = "inline";
     }
   }
