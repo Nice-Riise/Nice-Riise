@@ -26,20 +26,5 @@ function onClick(element) {
           x.className = x.className.replace(" w3-show", "");
       }
   }
+  .
   
-
-  function myFunction() {
-    var dots = document.getElementById("dots");
-    var moreText = document.getElementById("more");
-    var btnText = document.getElementById("myBtn");
-  
-    if (dots.style.display === "none") {
-      dots.style.display = "inline";
-      btnText.innerHTML = "Open Hobies"; 
-      moreText.style.display = "none";
-    } else {
-      dots.style.display = "none";
-      btnText.innerHTML = "Close Hobies"; 
-      moreText.style.display = "inline";
-    }
-  }
