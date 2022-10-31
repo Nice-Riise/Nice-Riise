@@ -61,24 +61,34 @@ body, html {
 #more {display: none;}
 
 .myBtn{
-  font-family: Roboto, sans-serif; font-weight: 0; font-size: 14px; color: #fff;
-background-color: #0066CC;
+font-family: Lato;
+font-weight: 0;
+font-size: 13px;
+color: #fff;
+background-color: #0066cc7c;
 padding: 10px 30px;
-border: 2px solid #0066cc;
-box-shadow: rgb (0, 0, 0) 0px 0px 0px 0px; border-radius: 50px; transition: 1000ms;
+border: none;
+box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+border-radius: 50px;
+transition : 767ms;
 transform: translateY(0);
 
 cursor: pointer;
-  
 }
 
-.myBtn:hover{
-  transition: 1000m;
-padding: 10px 50px;
-transform : translate(-0px);
-background-color: #fff; color: #0066cc;
+ 
+
+ 
+
+.myBtn:hover{ 
+  transition : 767ms;
+padding: 10px 34px;
+transform : translateY(-0px);
+background-color: #023e8a;
+color: #ffffff;
 border: solid 2px #0066cc;
 }
+ 
 
 </style>
 </head>
@@ -251,25 +261,46 @@ border: solid 2px #0066cc;
     </div>
 
     <span id="dots"></span><span id="more">
+
+      <div class= "w3-col m3">
+        <img src="https://github.com/Nice-Riise/nice-riise.github.io/blob/main/sup.jpeg?raw=true" style="border-radius: 50%; width: 140px; height: 140px;" onclick="onClick(this)" class="w3-hover-opacity" alt="Suuup!">
+      </div>
+
+      <div class= "w3-col m3">
+        <img src="https://github.com/Nice-Riise/nice-riise.github.io/blob/main/birken.JPG?raw=true" style="border-radius: 50%; width: 140px; height: 140px;" onclick="onClick(this)" class="w3-hover-opacity" alt="MTB contest!">
+      </div>
+
+      <div class= "w3-col m3">
+        <img src="https://github.com/Nice-Riise/nice-riise.github.io/blob/main/tur.JPG?raw=true" style="border-radius: 50%; width: 140px; height: 140px;" onclick="onClick(this)" class="w3-hover-opacity" alt="Fresh air!">
+      </div>
+
+      <div class= "w3-col m3">
+        <img src="https://github.com/Nice-Riise/nice-riise.github.io/blob/main/robot.jpeg?raw=true" style="border-radius: 50%; width: 140px; height: 140px;" onclick="onClick(this)" class="w3-hover-opacity" alt="Robot at Expo Dubai!">
+      </div>
+
+
+
+
+
+      <!--første hobby avsnitt-->
      <div class= "w3-col m3">
-        <img src="https://github.com/Nice-Riise/nice-riise.github.io/blob/main/pic/sykkelSandefjord.JPG?raw=true" style="border-radius: 50%; width: 140px; height: 140px;" onclick="onClick(this)" class="w3-hover-opacity" alt="core penetration test prog">
+        <img src="https://github.com/Nice-Riise/nice-riise.github.io/blob/main/pic/sykkelSandefjord.JPG?raw=true" style="border-radius: 50%; width: 140px; height: 140px;" onclick="onClick(this)" class="w3-hover-opacity" alt="MTB!">
       </div>
 
       <div class="w3-col m3">
-        <img src="https://github.com/Nice-Riise/nice-riise.github.io/blob/main/pic/sykkel%20gjeeng.JPG?raw=true" style="border-radius: 50%; width: 140px; height: 140px;" onclick="onClick(this)" class="w3-hover-opacity" alt="core penetration test prog">
+        <img src="https://github.com/Nice-Riise/nice-riise.github.io/blob/main/pic/sykkel%20gjeeng.JPG?raw=true" style="border-radius: 50%; width: 140px; height: 140px;" onclick="onClick(this)" class="w3-hover-opacity" alt="Saturday workout!">
       </div>
 
       <div class="w3-col m3">
-        <img src="https://github.com/Nice-Riise/nice-riise.github.io/blob/main/pic/ski%20hopp.JPG?raw=true" style="border-radius: 50%; width: 140px; height: 140px;" onclick="onClick(this)" class="w3-hover-opacity" alt="core penetration test prog">
+        <img src="https://github.com/Nice-Riise/nice-riise.github.io/blob/main/pic/ski%20hopp.JPG?raw=true" style="border-radius: 50%; width: 140px; height: 140px;" onclick="onClick(this)" class="w3-hover-opacity" alt="Ski!">
       </div>
 
       <div class="w3-col m3">
-        <img src="https://github.com/Nice-Riise/nice-riise.github.io/blob/main/pic/legoDubai.jpeg?raw=true" style="border-radius: 50%; width: 140px; height: 140px;" onclick="onClick(this)" class="w3-hover-opacity" alt="core penetration test prog">
+        <img src="https://github.com/Nice-Riise/nice-riise.github.io/blob/main/pic/legoDubai.jpeg?raw=true" style="border-radius: 50%; width: 140px; height: 140px;" onclick="onClick(this)" class="w3-hover-opacity" alt="Lego!">
       </div>
     </span></p>
-    <br>
-    <br>
-   <button class="myBtn" onclick="myFunctionBtn()" id="myBtn">Read more</button>
+  
+   <button class="myBtn" onclick="myFunctionBtn()" id="myBtn">Show Hobbies</button>
      </div>
 </div>
 
