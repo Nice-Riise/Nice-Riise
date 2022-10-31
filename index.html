@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
+  
 body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
 body, html {
   height: 100%;
@@ -28,10 +29,6 @@ body, html {
 .bgimg-1 {
   background-image: url("https://github.com/Nice-Riise/nice-riise.github.io/blob/main/pic/jonas%20foss.jpeg?raw=true");
   min-height: 700px;
-  
-  
-
-  
   
 
 }
@@ -61,7 +58,27 @@ body, html {
   }
 }
 
+#more {display: none;}
 
+.myBtn{
+  font-family: Roboto, sans-serif; font-weight: 0; font-size: 14px; color: #fff;
+background-color: #0066CC;
+padding: 10px 30px;
+border: 2px solid #0066cc;
+box-shadow: rgb (0, 0, 0) 0px 0px 0px 0px; border-radius: 50px; transition: 1000ms;
+transform: translateY(0);
+
+cursor: pointer;
+  
+}
+
+.myBtn:hover{
+  transition: 1000m;
+padding: 10px 50px;
+transform : translate(-0px);
+background-color: #fff; color: #0066cc;
+border: solid 2px #0066cc;
+}
 
 </style>
 </head>
@@ -233,28 +250,26 @@ body, html {
       <img src="https://github.com/Nice-Riise/nice-riise.github.io/blob/main/pic/IMG_2286.JPG?raw=true" style="border-radius: 50%; width: 140px; height: 140px;" onclick="onClick(this)" class="w3-hover-opacity" alt="core penetration test prog">
     </div>
 
-   
-    
-      <!--
-     <div class= "wraper">
+    <span id="dots"></span><span id="more">
+     <div class= "w3-col m3">
         <img src="https://github.com/Nice-Riise/nice-riise.github.io/blob/main/pic/sykkelSandefjord.JPG?raw=true" style="border-radius: 50%; width: 140px; height: 140px;" onclick="onClick(this)" class="w3-hover-opacity" alt="core penetration test prog">
       </div>
 
-      <div class="wraper">
+      <div class="w3-col m3">
         <img src="https://github.com/Nice-Riise/nice-riise.github.io/blob/main/pic/sykkel%20gjeeng.JPG?raw=true" style="border-radius: 50%; width: 140px; height: 140px;" onclick="onClick(this)" class="w3-hover-opacity" alt="core penetration test prog">
       </div>
 
-      <div class="wraper">
+      <div class="w3-col m3">
         <img src="https://github.com/Nice-Riise/nice-riise.github.io/blob/main/pic/ski%20hopp.JPG?raw=true" style="border-radius: 50%; width: 140px; height: 140px;" onclick="onClick(this)" class="w3-hover-opacity" alt="core penetration test prog">
       </div>
 
-      <div class="wraper">
+      <div class="w3-col m3">
         <img src="https://github.com/Nice-Riise/nice-riise.github.io/blob/main/pic/legoDubai.jpeg?raw=true" style="border-radius: 50%; width: 140px; height: 140px;" onclick="onClick(this)" class="w3-hover-opacity" alt="core penetration test prog">
       </div>
-    -->
-     
-     <div class="btncontainer">
-     <button class="btn"  style="margin-top:64px"  > LOAD MY Hobies </button>
+    </span></p>
+    <br>
+    <br>
+   <button class="myBtn" onclick="myFunctionBtn()" id="myBtn">Read more</button>
      </div>
 </div>
 
