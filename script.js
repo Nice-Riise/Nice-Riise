@@ -27,7 +27,6 @@ function onClick(element) {
       }
   }
   
-  function loadHobies() {
-
-   
   
+  
+
