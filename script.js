@@ -45,3 +45,21 @@ function myFunctionBtn() {
   }
 }
 
+/* make a futuristic modern analog clock with numbers */
+var clock = document.createElement('MyClock');
+clock.style.position = 'absolute';
+clock.style.top = '70%';
+clock.style.left = '50%';
+clock.style.transform = 'translate(-50%, -50%)';
+clock.style.fontSize = '100px';
+clock.style.fontFamily = 'monospace';
+clock.style.color = '#fff';
+clock.style.textShadow = '0 0 10px #fff';
+clock.style.userSelect = 'none';
+document.body.appendChild(clock);
+function updateClock() {
+  var date = new Date();
+  var time = date.toLocaleTimeString();
+  clock.innerHTML = time;
+}
+setInterval(updateClock, 1000);
