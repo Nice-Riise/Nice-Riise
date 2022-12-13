@@ -1,0 +1,109 @@
+  
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+body, html {
+  height: 100%;
+  color: #777;
+  line-height: 1.8;
+}
+
+
+/* Create a Parallax Effect */
+.bgimg-1, .bgimg-2, .bgimg-3 {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
+/* First image (Logo. Full height) */
+.bgimg-1 {
+  background-image: url("https://github.com/Nice-Riise/nice-riise.github.io/blob/main/pic/jonas%20foss.jpeg?raw=true");
+  min-height: 1000px;
+  
+
+}
+
+/* Second image (Portfolio) */
+.bgimg-2 {
+  background-image: url("https://github.com/Nice-Riise/nice-riise.github.io/blob/main/pic/sykkel%20sjø.jpeg?raw=true");
+  min-height: 400px;
+  background-size: cover;
+}
+
+/* Third image (Contact) */
+.bgimg-3 {
+  background-image: url("https://github.com/Nice-Riise/nice-riise.github.io/blob/main/pic/jonas%20oliver%20ski.JPG?raw=true");
+  min-height: 400px;
+}
+
+.w3-wide {letter-spacing: 10px;}
+.w3-hover-opacity {cursor: pointer;}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 600px) {
+  .bgimg-1, .bgimg-2, .bgimg-3 {
+    background-attachment: scroll;
+    min-height: 700px;
+    
+  }
+}
+
+#more {display: none;}
+
+.myBtn{
+font-family: Lato;
+font-weight: 0;
+font-size: 13px;
+color: #fff;
+background-color: #0066cc7c;
+padding: 10px 30px;
+border: none;
+box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+border-radius: 50px;
+transition : 767ms;
+transform: translateY(0);
+
+cursor: pointer;
+}
+
+ 
+
+ 
+
+.myBtn:hover{ 
+  transition : 767ms;
+padding: 10px 34px;
+transform : translateY(-0px);
+background-color: #023e8a;
+color: #ffffff;
+border: solid 2px #0066cc;
+}
+ 
+
+
+
+
+.likebtn-wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+
+
+  .flash-text {
+    animation: blinker 3s linear infinite;
+    position: absolute;
+    color: red;
+  font-weight: bold;
+  font-size: 110%;
+  left: 43%;
+  }
+  
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
