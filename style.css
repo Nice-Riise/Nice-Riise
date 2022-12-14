@@ -41,10 +41,11 @@ body, html {
 .w3-hover-opacity {cursor: pointer;}
 
 /* Turn off parallax scrolling for tablets and phones */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1000px) {
   .bgimg-1, .bgimg-2, .bgimg-3, .flash-text {
     background-attachment: scroll;
     min-height: 700px;
+    min-width: 700px;
     
   }
 }
@@ -96,7 +97,7 @@ border: solid 2px #0066cc;
   .flash-text {
     animation: blinker 3s linear infinite;
    position: absolute;
-  padding-left: 10px;
+  padding-left: 43%;
    
     color: red;
   font-weight: bold;
