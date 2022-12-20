@@ -3,33 +3,23 @@
 // Connect to the MySQL database
 $conn = mysqli_connect("6928fe13dc83", "jonasriise", "jonas0253", "NR");
 
-// Check if the form has been submitted
-if (isset($_POST['like'])) {
+// Retrieve the like and dislike counts from the LikeBtn server
+$api_key = 'a5f744a58e450ab8f15fc8122265dce0';
+$item_id = 'your_item_id';
 
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, "https://api.likebtn.com/api/v2/item/get");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+curl_setopt($ch, CURLOPT_HEADER, FALSE);
+curl_setopt($ch, CURLOPT_POST, TRUE);
+curl_setopt($ch, CURLOPT_POSTFIELDS, "api_key=$api_key&item_id=$item_id");
+$response = curl_exec($ch);
+curl_close($ch);
 
-  // Update the like count in the database
-  $sql = "UPDATE likes SET like_count = like_count + 1 WHERE id = 1";
-  mysqli_query($conn, $sql);
-} elseif (isset($_POST['dislike'])) {
-  // Update the dislike count in the database
-  
-  $sql = "UPDATE likes SET dislike_count = dislike_count + 1 WHERE id = 1";
-  mysqli_query($conn, $sql);
-}
+$data = json_decode($response, true);
+$like_count = $data['result']['like_count'];
+$dislike_count = $data['result']['dislike_count'];
 
-// Retrieve the current like and dislike counts from the database
-$sql = "SELECT * FROM likes WHERE id = 1";
-$result = mysqli_query($conn, $sql);
-$like_dislike_counts = mysqli_fetch_assoc($result);
-$like_count = $like_dislike_counts['like_count'];
-$dislike_count = $like_dislike_counts['dislike_count'];
-
-?>
-
-<!-- Display the like and dislike buttons and counts -->
-<form action="" method="post">
-  <button type="submit" name="like">Like</button>
-  <span><?php echo $like_count; ?></span>
-  <button type="submit" name="dislike">Dislike</button>
-  <span><?php echo $dislike_count; ?></span>
-</form>
+// Update the like and dislike counts in the database
+$sql = "UPDATE likes SET like_count = $like_count, dislike_count = $dislike_count WHERE id = 1";
+mysqli_query($conn, $sql);
