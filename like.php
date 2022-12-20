@@ -5,11 +5,14 @@ $conn = mysqli_connect("6928fe13dc83", "jonasriise", "jonas0253", "NR");
 
 // Check if the form has been submitted
 if (isset($_POST['like'])) {
+
+
   // Update the like count in the database
   $sql = "UPDATE likes SET like_count = like_count + 1 WHERE id = 1";
   mysqli_query($conn, $sql);
 } elseif (isset($_POST['dislike'])) {
   // Update the dislike count in the database
+  
   $sql = "UPDATE likes SET dislike_count = dislike_count + 1 WHERE id = 1";
   mysqli_query($conn, $sql);
 }

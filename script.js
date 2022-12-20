@@ -67,23 +67,28 @@ setInterval(updateClock, 1000);
 
 
 const likeButton = document.getElementById('like-button');
+const dislikeButton = document.getElementById('dislike-button');
 const likeCount = document.getElementById('like-count');
+const dislikeCount = document.getElementById('dislike-count');
 
-// Retrieve initial like count
-fetch('like.php')
-  .then(response => response.json())
-  .then(data => {
-    likeCount.textContent = data.count;
-  });
-
-// Update like count when button is clicked
 likeButton.addEventListener('click', () => {
-  fetch('like.php?like')
+  fetch('like.php')
     .then(response => response.json())
     .then(data => {
       likeCount.textContent = data.count;
     });
 });
+
+dislikeButton.addEventListener('click', () => {
+  fetch('dislike.php')
+    .then(response => response.json())
+    .then(data => {
+      dislikeCount.textContent = data.count;
+    });
+});
+
+
+
 
 // Modal Image Gallery
 function onClick(element) {
