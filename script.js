@@ -69,8 +69,16 @@ setInterval(updateClock, 1000);
 const likeButton = document.getElementById('like-button');
 const likeCount = document.getElementById('like-count');
 
+// Retrieve initial like count
+fetch('like.php')
+  .then(response => response.json())
+  .then(data => {
+    likeCount.textContent = data.count;
+  });
+
+// Update like count when button is clicked
 likeButton.addEventListener('click', () => {
-  fetch('like.php')
+  fetch('like.php?like')
     .then(response => response.json())
     .then(data => {
       likeCount.textContent = data.count;
@@ -102,3 +110,5 @@ function onClick(element) {
       if (x.className.indexOf("w3-show") == -1) 
           x.className += " w3-show";
   }
+
+  
