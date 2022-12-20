@@ -1,23 +1,18 @@
-// Connect to the MySQL database
+// Connect to MySQL database
+$conn = mysqli_connect("localhost", "root", "jonas0253", "NR");
 
-$host = 'jonasriise'; // Replace with the hostname of your MySQL server
-$user = 'root'; // Replace with the username for your MySQL user
-$password = 'jonas0253'; // Replace with the password for your MySQL user
-$database = 'NR'; // Replace with the name of your MySQL database
-
-$conn = mysqli_connect($host, $user, $password, $database);
-
-if (!$conn) {
-    // Connection failed, handle the error
+// Check if "like" request was sent
+if (isset($_GET["like"])) {
+  // Increment like count in database
+  $query = "UPDATE likes SET count = count + 1";
+  mysqli_query($conn, $query);
 }
 
-// Update the like count in the database
-$like_count = 10; // Replace with the current like count
-$sql = "UPDATE likes SET likes = $like_count WHERE id = 1"; // Replace with the appropriate table and column names
-$result = mysqli_query($conn, $sql);
+// Retrieve like count from database
+$query = "SELECT count FROM likes";
+$result = mysqli_query($conn, $query);
+$row = mysqli_fetch_assoc($result);
+$count = $row["count"];
 
-if (!$result) {
-    // Query failed, handle the error
-}
-
-echo json_encode(['count' => $like_count]); // Return the updated like count as JSON
+// Return like count in response
+echo json_encode(array("count" => $count));
