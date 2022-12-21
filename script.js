@@ -38,10 +38,19 @@ function myFunctionBtn() {
     dots.style.display = "inline";
     btnText.innerHTML = "Show hobbies"; 
     moreText.style.display = "none";
+    window.scrollTo({
+      top: window.pageYOffset - 500,
+      left: 0,
+      behavior: "smooth"
+    });
+    
+    
   } else {
     dots.style.display = "none";
     btnText.innerHTML = "Hide Hobbies"; 
     moreText.style.display = "inline";
+    
+    
   }
 }
 
@@ -120,11 +129,3 @@ function onClick(element) {
     console.log(response);
   });
 
-// scroll upp to showhobbies
-function scrollToShowButton() {
-  const showButton = document.getElementById('show-hobbies-button');
-  window.scrollTo({
-    top: showButton.offsetTop,
-    behavior: 'smooth'
-  });
-}

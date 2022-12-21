@@ -111,4 +111,12 @@ border: solid 2px #0066cc;
     }
   }
 
- 
+  @media only screen and (max-width: 600px) {
+    #show-hobbies {
+      display: inline-block;
+    }
+  }
+
+
+
+  
