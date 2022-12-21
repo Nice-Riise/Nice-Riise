@@ -119,3 +119,12 @@ function onClick(element) {
   likebtn_get_vote('unique_identifier', function(response) {
     console.log(response);
   });
+
+// scroll upp to showhobbies
+function scrollToShowButton() {
+  const showButton = document.getElementById('show-hobbies-button');
+  window.scrollTo({
+    top: showButton.offsetTop,
+    behavior: 'smooth'
+  });
+}
