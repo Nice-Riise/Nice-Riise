@@ -72,7 +72,7 @@ const likeCount = document.getElementById('like-count');
 const dislikeCount = document.getElementById('dislike-count');
 
 likeButton.addEventListener('click', () => {
-  fetch('like.php', { method: 'POST', body: 'like=1' })
+  fetch('like.php')
     .then(response => response.json())
     .then(data => {
       likeCount.textContent = data.count;
@@ -80,7 +80,7 @@ likeButton.addEventListener('click', () => {
 });
 
 dislikeButton.addEventListener('click', () => {
-  fetch('dislike.php', { method: 'POST', body: 'dislike=1' })
+  fetch('dislike.php')
     .then(response => response.json())
     .then(data => {
       dislikeCount.textContent = data.count;
@@ -116,4 +116,6 @@ function onClick(element) {
           x.className += " w3-show";
   }
 
-  
+  likebtn_get_vote('unique_identifier', function(response) {
+    console.log(response);
+  });
