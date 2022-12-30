@@ -140,3 +140,25 @@ function onClick(element) {
     console.log(response);
   });
 
+
+  
+
+// Get the search form and search button elements
+var searchForm = document.getElementById("search-form");
+var searchButton = document.getElementById("search-button");
+
+// Add a click event listener to the search button
+searchButton.addEventListener("click", function() {
+  // Toggle the display of the search form
+  searchForm.style.display = searchForm.style.display === "block" ? "none" : "block";
+});
+// Get the search form element
+var searchForm = document.getElementById("search-form");
+
+// Add a click event listener to the search form
+searchForm.addEventListener("click", function(event) {
+  // If the user clicks anywhere outside of the form, close it
+  if (event.target === searchForm) {
+    searchForm.style.display = "none";
+  }
+});
