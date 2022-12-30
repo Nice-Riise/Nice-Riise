@@ -119,4 +119,7 @@ border: solid 2px #0066cc;
 
 
 
-  
+  #close-menu {
+    font-size: 20px;
+    color: #333;
+  }

@@ -120,11 +120,22 @@ function onClick(element) {
   
   // Used to toggle the menu on small screens when clicking on the menu button
   function toggleFunction() {
-      var x = document.getElementById("navDemo");
-      if (x.className.indexOf("w3-show") == -1) 
-          x.className += " w3-show";
+    var x = document.getElementById("navDemo");
+    var toggleBtn = document.querySelector(".fa-bars, .fa-times");
+    if (x.className.indexOf("w3-show") == -1) {
+      x.className += " w3-show";
+      toggleBtn.classList.remove("fa-bars");
+      toggleBtn.classList.add("fa-times");
+    } else {
+      x.className = x.className.replace(" w3-show", "");
+      toggleBtn.classList.remove("fa-times");
+      toggleBtn.classList.add("fa-bars");
+    }
   }
+  
 
+
+  //likebutton
   likebtn_get_vote('unique_identifier', function(response) {
     console.log(response);
   });
