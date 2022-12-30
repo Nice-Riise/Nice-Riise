@@ -27,32 +27,43 @@ function onClick(element) {
       }
   }
   
+  function myFunctionBtn() {
+    // Get the "dots" element
+    var dots = document.getElementById("dots");
+    // Get the "more" element
+    var moreText = document.getElementById("more");
+    // Get the button element
+    var btnText = document.getElementById("myBtn");
+  
+    if (dots.style.display === "none") {
+      // If the "dots" element is not displayed,
+      // set the display style of the "dots" element to "inline"
+      dots.style.display = "inline";
+      // Set the text of the button to "Show hobbies"
+      btnText.innerHTML = "Show hobbies";
+      // Set the display style of the "more" element to "none"
+      moreText.style.display = "none";
+      // Scroll the window up
+      window.scrollTo({
+        top: window.pageYOffset - 500,
+        left: 0,
+        behavior: "smooth"
+      });
+    } else {
+      // If the "dots" element is displayed,
+      // set the display style of the "dots" element to "none"
+      dots.style.display = "none";
+      // Set the text of the button to "Hide Hobbies"
+      btnText.innerHTML = "Hide Hobbies";
+      // Set the display style of the "more" element to "inline"
+      moreText.style.display = "inline";
+    }
+  }
   
 
-function myFunctionBtn() {
-  var dots = document.getElementById("dots");
-  var moreText = document.getElementById("more");
-  var btnText = document.getElementById("myBtn");
 
-  if (dots.style.display === "none") {
-    dots.style.display = "inline";
-    btnText.innerHTML = "Show hobbies"; 
-    moreText.style.display = "none";
-    window.scrollTo({
-      top: window.pageYOffset - 500,
-      left: 0,
-      behavior: "smooth"
-    });
     
-    
-  } else {
-    dots.style.display = "none";
-    btnText.innerHTML = "Hide Hobbies"; 
-    moreText.style.display = "inline";
-    
-    
-  }
-}
+  
 
 /* make a futuristic modern analog clock with numbers */
 var clock = document.createElement('MyClock');
@@ -143,22 +154,3 @@ function onClick(element) {
 
   
 
-// Get the search form and search button elements
-var searchForm = document.getElementById("search-form");
-var searchButton = document.getElementById("search-button");
-
-// Add a click event listener to the search button
-searchButton.addEventListener("click", function() {
-  // Toggle the display of the search form
-  searchForm.style.display = searchForm.style.display === "block" ? "none" : "block";
-});
-// Get the search form element
-var searchForm = document.getElementById("search-form");
-
-// Add a click event listener to the search form
-searchForm.addEventListener("click", function(event) {
-  // If the user clicks anywhere outside of the form, close it
-  if (event.target === searchForm) {
-    searchForm.style.display = "none";
-  }
-});
