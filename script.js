@@ -28,42 +28,35 @@ function onClick(element) {
   }
   
   function myFunctionBtn() {
-    // Get the "dots" element
     var dots = document.getElementById("dots");
-    // Get the "more" element
     var moreText = document.getElementById("more");
-    // Get the button element
     var btnText = document.getElementById("myBtn");
   
     if (dots.style.display === "none") {
-      // If the "dots" element is not displayed,
-      // set the display style of the "dots" element to "inline"
       dots.style.display = "inline";
-      // Set the text of the button to "Show hobbies"
-      btnText.innerHTML = "Show hobbies";
-      // Set the display style of the "more" element to "none"
+      btnText.innerHTML = "Show Hobbies "; 
       moreText.style.display = "none";
-      // Scroll the window up
+  
+      // Scroll to Show Hobbies button
       window.scrollTo({
-        top: window.pageYOffset - 500,
-        left: 0,
-        behavior: "smooth"
+        top: document.getElementById("myBtn").offsetTop - 400,
+        behavior: 'smooth',
+        duration: 2000000000000
       });
     } else {
-      // If the "dots" element is displayed,
-      // set the display style of the "dots" element to "none"
       dots.style.display = "none";
-      // Set the text of the button to "Hide Hobbies"
-      btnText.innerHTML = "Hide Hobbies";
-      // Set the display style of the "more" element to "inline"
+      btnText.innerHTML = "Hide Hobbies"; 
       moreText.style.display = "inline";
     }
   }
   
-
-
-    
   
+
+ 
+
+
+
+
 
 /* make a futuristic modern analog clock with numbers */
 var clock = document.createElement('MyClock');
@@ -154,3 +147,4 @@ function onClick(element) {
 
   
 
+  

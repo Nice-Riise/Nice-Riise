@@ -110,7 +110,11 @@ border: solid 2px #0066cc;
       opacity: 0;
     }
   }
-
+  @media only screen and (max-width: 600px) {
+    .w3-col {
+      width: 50% !important;
+    }
+  }
   @media only screen and (max-width: 600px) {
     #show-hobbies {
       display: inline-block;
@@ -124,5 +128,10 @@ border: solid 2px #0066cc;
     color: #333;
   }
 
-
+  @media (max-width: 600px) {
+    /* Add styles to prevent wiggling on small screens */
+    html {
+      overflow-x: hidden; /* Hide horizontal scrollbar */
+    }
+  }
   
