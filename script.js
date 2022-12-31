@@ -61,7 +61,7 @@ function onClick(element) {
 /* make a futuristic modern analog clock with numbers */
 var clock = document.createElement('MyClock');
 clock.style.position = 'absolute';
-clock.style.top = '90%';
+clock.style.top = '30%';
 clock.style.left = '50%';
 clock.style.transform = 'translate(-50%, -50%)';
 clock.style.fontSize = '20px';
