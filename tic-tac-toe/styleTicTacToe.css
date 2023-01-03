@@ -4,19 +4,34 @@ body {
   }
   
   .board {
-    width: 250px;
+    
+    width: 575px;
     border: 2px solid;
   }
   
   .row {
     display: flex;
+    
+  
   }
   
   .cell {
-    width: 150px;
-    height: 75px;
+  
+    width: 200px;
+    height: 200px;
     border: 2px solid;
     text-align: center;
-    line-height: 75px;
+    line-height: 175px;
+    cursor: pointer;
+    font-size: xx-large;
+    
+  }
+  
+  .js-winner {
+    font-size: xx-large;
+  }
+
+  .TicTacToe {
+    padding: 100px;
   }
   
