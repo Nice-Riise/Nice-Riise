@@ -31,7 +31,7 @@ body {
     font-size: xx-large;
   }
 
-  
+
   .center {
     display: block;
     margin: 0 auto;
@@ -45,5 +45,25 @@ body {
       display: block;
       margin: 0 auto;
       text-align: center;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .board {
+      width: 70%;
+      
+      
+
+      
+    }
+  
+    .cell {
+      width: 50%;
+      height: 50%;
+    }
+  
+    .cell,
+    .js-winner {
+      font-size: x-large;
     }
   }
