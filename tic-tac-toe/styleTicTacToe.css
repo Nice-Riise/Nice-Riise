@@ -31,7 +31,19 @@ body {
     font-size: xx-large;
   }
 
-  .TicTacToe {
-    padding: 100px;
-  }
   
+  .center {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+ 
+
+  @media only screen and (max-width: 600px) {
+    .center {
+      display: block;
+      margin: 0 auto;
+      text-align: center;
+    }
+  }
