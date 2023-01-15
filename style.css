@@ -140,6 +140,8 @@ border: solid 2px #0066cc;
     margin: 0 auto;
     text-align: center;
   }
+ 
+ /*
   .visitor-counter {
     font-size: 2em;
     color: #fff;
@@ -147,8 +149,10 @@ border: solid 2px #0066cc;
     text-align: center;
 }
 .visitor-counter {
+  
   position: fixed;
   bottom: 0;
   width: 100%;
   text-align: center;
 }
+*/
