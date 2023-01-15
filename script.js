@@ -78,7 +78,7 @@ function updateClock() {
 setInterval(updateClock, 1000);
 
 
-/*
+
 const likeButton = document.getElementById('like-button');
 const dislikeButton = document.getElementById('dislike-button');
 const likeCount = document.getElementById('like-count');
@@ -101,7 +101,7 @@ dislikeButton.addEventListener('click', () => {
 });
 
 
-*/
+
 
 // Modal Image Gallery
 function onClick(element) {
@@ -138,12 +138,12 @@ function onClick(element) {
   }
   
 
-/*
+
   //likebutton
   likebtn_get_vote('unique_identifier', function(response) {
     console.log(response);
   });
-*/
+
 
   
 
