@@ -145,4 +145,19 @@ function onClick(element) {
   });
 
 
-  
+  /*
+  var count;
+
+function getVisitorCount() {
+    // Replace 'GA_MEASUREMENT_ID' with your Google Analytics measurement ID
+    gapi.client.analytics.data.realtime.get({
+        "ids": "GA_MEASUREMENT_ID",
+        "metrics": "rt:activeUsers"
+    }).then(function(response) {
+        count = response.result.totalsForAllResults["rt:activeUsers"];
+        document.getElementById("visitor-counter").innerHTML = count;
+    }, function(error) {
+        console.log(error);
+    });
+}
+ */
