@@ -146,5 +146,3 @@ function onClick(element) {
 
 
   
-
-  
