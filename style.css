@@ -140,7 +140,9 @@ border: solid 2px #0066cc;
     margin: 0 auto;
     text-align: center;
   }
- 
+  .my-button {
+    cursor: pointer;
+  }
  /*
   .visitor-counter {
     font-size: 2em;
