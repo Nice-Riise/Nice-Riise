@@ -1,0 +1,21 @@
+/* Styles for large screens */
+.chart-widget {
+    width: 800px;
+    height: 600px;
+}
+
+/* Styles for mobile screens */
+@media only screen and (max-width: 600px) {
+    .chart-widget {
+        width: 100%;
+        height: 300px;
+    }
+}
+
+/* Disable sideways scrolling on mobile */
+@media (max-width: 600px) {
+    /* Add styles to prevent wiggling on small screens */
+    html {
+      overflow-x: hidden; /* Hide horizontal scrollbar */
+    }
+  }
