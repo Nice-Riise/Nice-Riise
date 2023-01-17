@@ -1,16 +1,4 @@
-/* Styles for large screens */
-.chart-widget {
-    width: 800px;
-    height: 600px;
-}
 
-/* Styles for mobile screens */
-@media only screen and (max-width: 600px) {
-    .chart-widget {
-        width: 100%;
-        height: 300px;
-    }
-}
 
 /* Disable sideways scrolling on mobile */
 @media (max-width: 600px) {
@@ -21,9 +9,16 @@
   }
 
   @media only screen and (max-width: 600px) {
-    /* Add styles for mobile screens */
-    .trading-widget {
-      margin: 0 auto; /* center the widget horizontally */
-      text-align: center; /* center the widget horizontally */
+    .tradingview-widget-container {
+      width: 100%;
+      height: auto;
+      overflow: hidden;
     }
   }
+
+  @media only screen and (max-width: 600px) {
+    .tradingview-widget-container {
+      width: 75%; 
+      height: 85%;
+    }
+}
