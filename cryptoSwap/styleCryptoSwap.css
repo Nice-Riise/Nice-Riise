@@ -18,8 +18,8 @@
 */
   @media only screen and (max-width: 600px) {
     .tradingview-widget-container {
-      width: 75%; 
-      height: 85%;
+      width: 50%; 
+      height: 50%;
     }
 }
 
