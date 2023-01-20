@@ -1,7 +1,7 @@
 
 
 /* Disable sideways scrolling on mobile */
-@media (max-width: 600px) {
+@media only screen and (max-width: 800px) {
     /* Add styles to prevent wiggling on small screens */
     html {
       overflow-x: hidden; /* Hide horizontal scrollbar */
@@ -20,7 +20,11 @@ body, html {
   .tradingview-widget-container1 {
    display: none;
   }
- 
+ .tradingview-widget-container__widget {
+  display: flex;
+  align-items: center;
+
+ }
 }
 
 
