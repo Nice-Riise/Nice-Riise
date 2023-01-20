@@ -59,10 +59,3 @@ function openMenu(evt, menuName) {
 document.getElementById("myLink").click();
 
 
-if (window.innerWidth < 600) {
-    // Add a class to the widget container
-    document.querySelector('.tradingview-widget-container').classList.add('mobile-size');
-  } else {
-    // Remove the class from the widget container
-    document.querySelector('.tradingview-widget-container').classList.remove('mobile-size');
-  }
