@@ -6,9 +6,13 @@
     html {
       overflow-x: hidden; /* Hide horizontal scrollbar */
     }
+    body {
+      overflow-x: hidden;
+      }
   }
 
-  
+
+
 
 body, html {
   height: 100%;
