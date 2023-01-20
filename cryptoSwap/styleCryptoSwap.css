@@ -22,3 +22,9 @@
       height: 85%;
     }
 }
+
+.tradingview-widget-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

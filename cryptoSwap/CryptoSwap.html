@@ -49,7 +49,9 @@ body, html {
   </div>
 </div>
 
-
+<br>
+<br>
+<br>
 
 <!-- Header with image -->
 <header class="bgimg w3-display-container w3-grayscale-min" id="home">
@@ -57,8 +59,9 @@ body, html {
     <span class="w3-tag"></span>
     <p><!-- TradingView Widget BEGIN -->
       <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
-        <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/" rel="noopener" target="_blank"><span class="blue-text">Markets today</span></a> by TradingView</div>
+        <div class="tradingview-widget-container__widget"></div> 
+        <div class="tradingview-widget-copyright"> 
+          <a href="https://www.tradingview.com/markets/" rel="noopener" target="_blank"><span class="blue-text">Markets today</span></a> by TradingView</div>
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
         {
         "symbols"; [
@@ -136,33 +139,52 @@ body, html {
       
     </div>
 
-<!-- TradingView Widget2 BEGIN -->
-<body>
-  <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
-    <div class="tradingview-widget-container">
-      <div id="tradingview_95f8c"></div>
-      <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/BTCUSD/?exchange=BITSTAMP" rel="noopener" target="_blank"><span class="blue-text">Bitcoin chart</span></a> by TradingView</div>
-      <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-      <script type="text/javascript">
-        new TradingView.widget(
-        {
-    "width": 980,
-    "height": 610,
-    "symbol": "BITSTAMP:BTCUSD",
-    "interval": "D",
-    "timezone": "Etc/UTC",
-    "theme": "light",
-    "style": "1",
-    "locale": "en",
-    "toolbar_bg": "#f1f3f6",
-    "enable_publishing": false,
-    "allow_symbol_change": true,
-    "container_id": "tradingview_95f8c"
-  }
-    );
-    </script>
-  </div>
-  <!-- TradingView Widget END -->
+    
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div id="tradingview_07735"></div>
+  
+  
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <script type="text/javascript">
+  new TradingView.MediumWidget(
+  {
+  "symbols": [
+    [
+      "CryptoTot",
+      "CRYPTOCAP:TOTAL|1M"
+    ]
+  ],
+  "chartOnly": false,
+  "width": 1000,
+  "height": 500,
+  "locale": "en",
+  "colorTheme": "light",
+  "autosize": false,
+  "showVolume": false,
+  "hideDateRanges": false,
+  "hideMarketStatus": false,
+  "scalePosition": "right",
+  "scaleMode": "Normal",
+  "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+  "fontSize": "10",
+  "noTimeScale": false,
+  "valuesTracking": "1",
+  "changeMode": "price-and-percent",
+  "chartType": "area",
+  "lineColor": "#2962ff",
+  "topColor": "rgba(41, 98, 255, 0.3)",
+  "bottomColor": "rgba(41, 98, 255, 0)",
+  "lineWidth": 3,
+  "container_id": "tradingview_07735"
+}
+  );
+  </script>
+  
+</div>
+<div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/TOTAL/?exchange=CRYPTOCAP" rel="noopener" target="_blank"><span class="blue-text">TOTAL rates</span></a> by TradingView</div>
+<!-- TradingView Widget END -->
+   
 
     
     <!--<img src="./picsSwap/colour refugees-1015294.jpg" style="width:100%;max-width:1000px" class="w3-margin-top flipp">
