@@ -7,31 +7,29 @@
       overflow-x: hidden; /* Hide horizontal scrollbar */
     }
   }
-/*
-  @media only screen and (max-width: 600px) {
-    .tradingview-widget-container {
-      width: 100%;
-      height: auto;
-      overflow: hidden;
-    }
-  }
-*/
-  @media only screen and (max-width: 600px) {
-    .tradingview-widget-container {
-      display: none;
 
-     
-     
   
-    }
-}
-
-
 
 body, html {
   height: 100%;
   font-family: "Inconsolata", sans-serif;
 }
+
+/* Resize widget container on mobile screens */
+@media only screen and (max-width: 800px) {
+  .tradingview-widget-container1 {
+   display: none;
+  }
+ 
+}
+
+
+
+.mobile-size {
+  width: 90%;
+  height: 300px;
+}
+
 
 .bgimg {
   width: 100%;

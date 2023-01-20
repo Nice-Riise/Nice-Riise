@@ -28,7 +28,7 @@ return tokenList.filter(token => ticerList.includes(token.symbol));
 function renderForm(tokens) {
 
     const options = tokens.map(token => 
-        `<option value="${token.adress}">${token.name} (${token.symbol})</option`);
+        `<option value="${token.adress}">${token.name} (${token.symbol})</option>`);
  
         document.querySelector('select[name=from-token]').innerHTML = options;
         document.querySelector('select[name=to-token]').innerHTML = options;
@@ -59,3 +59,10 @@ function openMenu(evt, menuName) {
 document.getElementById("myLink").click();
 
 
+if (window.innerWidth < 600) {
+    // Add a class to the widget container
+    document.querySelector('.tradingview-widget-container').classList.add('mobile-size');
+  } else {
+    // Remove the class from the widget container
+    document.querySelector('.tradingview-widget-container').classList.remove('mobile-size');
+  }
