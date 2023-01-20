@@ -7,7 +7,7 @@
       overflow-x: hidden; /* Hide horizontal scrollbar */
     }
   }
-
+/*
   @media only screen and (max-width: 600px) {
     .tradingview-widget-container {
       width: 100%;
@@ -15,19 +15,17 @@
       overflow: hidden;
     }
   }
-
+*/
   @media only screen and (max-width: 600px) {
     .tradingview-widget-container {
-      width: 50%; 
-      height: 50%;
+      display: none;
+
+     
+     
+  
     }
 }
 
-.tradingview-widget-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 
 body, html {
