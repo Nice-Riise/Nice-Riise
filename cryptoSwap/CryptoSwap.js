@@ -21,7 +21,7 @@ async function getTicerData(ticerList) {
 const tokens1 = await response1.json();
 const tokens2 = await response2.json();
 const tokens3 = await response3.json();
-const tokenList = Object.values(tokens1.tokens, tokens2.tokens, tokens3.tokens);
+const tokenList = [...Object.values(tokens1.tokens), ...Object.values(tokens2.tokens), ...Object.values(tokens3.tokens)];
 return tokenList.filter(token => ticerList.includes(token.symbol));
 }
 
