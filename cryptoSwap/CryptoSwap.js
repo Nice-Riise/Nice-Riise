@@ -28,12 +28,42 @@ return tokenList.filter(token => ticerList.includes(token.symbol));
 function renderForm(tokens) {
 
     const options = tokens.map(token => 
-        `<option value="${token.adress}">${token.name} (${token.symbol})</option>`);
+        `<option value="${token.decimals}-${token.address}">${token.name} (${token.symbol})</option>`);
  
-        document.querySelector('select[name=from-token]').innerHTML = options;
-        document.querySelector('select[name=to-token]').innerHTML = options;
+        document
+        .querySelector('select[name=from-token]')
+        .innerHTML = options;
+        document
+        .querySelector('select[name=to-token]')
+        .innerHTML = options;
         
     }
+
+async function formSubmitted(event) {
+    event.preventDefault();
+    const fromToken = document.querySelector('select[name=from-token]').value;
+    const toToken = document.querySelector('select[name=to-token]').value;
+    const [fromDecimals, fromAddress] = fromToken.split('-');
+    const [toDecimals, toAddress] = toToken.split('-');
+    const fromUnit = 10 ** fromDecimals; 
+    if(isNaN(fromUnit)){
+        console.log("amount should be a number string ");
+        return;
+    }
+    const url = `https://api.1inch.io/v5.0/1/quote?fromTokenAddress=${fromAddress}&toTokenAddress=${toAddress}&amount=${fromUnit}`;
+
+    const response = await fetch(url);
+    const quote = await response.json();
+    const exchangeRate = Number(quote.toTokenAmount) / Number(quote.fromTokenAmount);
+    document.querySelector('.js-result-quote-container').innerHTML = `
+            <h4>1 ${quote.fromToken.symbol} = ${exchangeRate} ${quote.toToken.symbol}</h4>
+    `;
+}
+
+
+    document
+    .querySelector('button.SwapPrice')
+    .addEventListener('click', formSubmitted);
 
 
 getTop10Tokens()
