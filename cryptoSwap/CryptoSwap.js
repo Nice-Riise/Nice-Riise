@@ -39,7 +39,8 @@ async function formSubmitted(event) {
   const quote = await response.json();
   const exchangeRate = Number(quote.toTokenAmount) / Number(quote.fromTokenAmount);
   document.querySelector('.js-result-quote-container').innerHTML = `
-          <h4>1 ${quote.fromToken.symbol} = ${exchangeRate} ${quote.toToken.symbol}</h4>
+          <h5>1 ${quote.fromToken.symbol} = ${exchangeRate} ${quote.toToken.symbol}</h5>
+          <h6> EST gasFee = ${quote.estimatedGas}</h6>
   `;
 }
 
