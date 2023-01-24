@@ -30,6 +30,7 @@ async function formSubmitted(event) {
   const [fromDecimals, fromAddress] = fromToken.split('-');
   const [toDecimals, toAddress] = toToken.split('-');
   const fromUnit = 10 ** fromDecimals; 
+  const decimalRatio = 10 ** (toDecimals - fromDecimals);
   if(isNaN(fromUnit)){
       console.log("amount should be a number string ");
       return;
@@ -37,10 +38,10 @@ async function formSubmitted(event) {
   const url = `https://api.1inch.io/v3.0/56/quote?fromTokenAddress=${fromAddress}&toTokenAddress=${toAddress}&amount=${fromUnit}`;
   const response = await fetch(url);
   const quote = await response.json();
-  const exchangeRate = Number(quote.toTokenAmount) / Number(quote.fromTokenAmount);
+  const exchangeRate = Number(quote.toTokenAmount) / Number(quote.fromTokenAmount) / decimalRatio;
   document.querySelector('.js-result-quote-container').innerHTML = `
           <h5>1 ${quote.fromToken.symbol} = ${exchangeRate} ${quote.toToken.symbol}</h5>
-          <h6> EST gasFee = ${quote.estimatedGas}</h6>
+          <h6> EST GasFee = ${quote.estimatedGas}</h6>
   `;
 }
 
