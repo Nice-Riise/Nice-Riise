@@ -2,7 +2,7 @@ const chatContainer = document.getElementById("chat-window");
 const chatForm = document.getElementById("chat-form");
 const chatInput = document.getElementById("chat-input");
 
-const apiKey = "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";
+const apiKey = "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";
 
 function sendMessage(message) {
   const messageElement = addMessage(message, "user", "pending");
