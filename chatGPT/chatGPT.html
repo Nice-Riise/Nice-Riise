@@ -17,6 +17,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        text-align: center;
       }
 
       .chat-window {
@@ -34,7 +35,7 @@
         margin-bottom: 16px;
       }
 
-      .user {
+      .user-message {
         background-color: #d0e0ff;
         align-self: flex-start;
         border-radius: 8px;
@@ -42,7 +43,7 @@
         max-width: 70%;
       }
 
-      .bot {
+      .bot-message {
         background-color: #f0f0f0;
         align-self: flex-end;
         border-radius: 8px;
@@ -69,6 +70,29 @@
         color: #333;
         cursor: pointer;
       }
+      .chat-input {
+  width: 100%;
+  margin-top: 16px;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #ddd;
+  color: #333;
+  text-align: center;
+}
+
+.chat-submit {
+  margin-top: 16px;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #227093;
+  color: #fff;
+  cursor: pointer;
+}
+
     </style>
   </head>
   <body>
@@ -80,50 +104,41 @@
       </form>
     </div>
     <script>
-      const chatContainer = document.getElementById("chat-window");
+      const chatWindow = document.getElementById("chat-window");
       const chatForm = document.getElementById("chat-form");
       const chatInput = document.getElementById("chat-input");
 
-      const apiKey = "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";
+      const apiKey = "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";
 
       function sendMessage(message) {
-        const requestOptions = {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${apiKey}`
-          },
-          body: JSON.stringify({
-            prompt: message,
-            max_tokens: 100,
-            n: 1,
-            stop: ["\n"]
-          })
-        };
+  addMessage(message, "user");
+  
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${apiKey}`
+    },
+    body: JSON.stringify({
+      prompt: message,
+      max_tokens: 100,
+      n: 1,
+      stop: ["\n"]
+    })
+  };
 
-        fetch("https://api.openai.com/v1/engines/davinci-codex/completions", requestOptions)
-          .then(response => response.json())
-          .then(data => {
-            const response = data.choices[0].text.trim();
-            addMessage(message, "user");
-            addMessage(response, "bot");
-          })
-          .catch(error => console.error(error));
-      }
-
-      function addMessage(message, sender) {
-        const messageElement = document.createElement("div");
-        messageElement.classList.add("message");
-        messageElement.classList.add(sender);
-        messageElement.innerText = message;
-        chatContainer.appendChild(messageElement);
-      }
-
-      chatForm.addEventListener("submit", event => {
-        event.preventDefault();
-        const message = chatInput.value.trim();
-  if (message) {
-    sendMessage(message);
-    chatInput.value = "";
-  }
-});
+  fetch("https://api.openai.com/v1/engines/davinci-codex/completions", requestOptions)
+    .then(response => response.json())
+    .then(data => {
+      const response = data.choices[0].text.trim();
+      addMessage(response, "bot");
+    })
+    .catch(error => console.error(error));
+}
+function addMessage(message, sender) {
+  const messageElement = document.createElement("div");
+  messageElement.classList.add("message");
+  messageElement.classList.add(sender + "-message");
+  messageElement.innerText = message;
+  chatWindow.appendChild(messageElement); // add the message element to the chat window
+}
