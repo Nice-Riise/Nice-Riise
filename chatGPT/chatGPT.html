@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OpenAI Chatbot Example</title>
+    <style>
+      body {
+        background-color: #333;
+        color: #eee;
+        font-family: sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .chat-container {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .chat-window {
+        width: 400px;
+        height: 500px;
+        background-color: #eee;
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        padding: 16px;
+        border-radius: 8px;
+      }
+
+      .message {
+        margin-bottom: 16px;
+      }
+
+      .user {
+        background-color: #d0e0ff;
+        align-self: flex-start;
+        border-radius: 8px;
+        padding: 8px;
+        max-width: 70%;
+      }
+
+      .bot {
+        background-color: #f0f0f0;
+        align-self: flex-end;
+        border-radius: 8px;
+        padding: 8px;
+        max-width: 70%;
+      }
+
+      .chat-input {
+        width: 100%;
+        margin-top: 16px;
+        padding: 8px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+      }
+
+      .chat-submit {
+        margin-top: 16px;
+        padding: 8px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        background-color: #d0e0ff;
+        color: #333;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="chat-container">
+      <div class="chat-window" id="chat-window"></div>
+      <form id="chat-form" class="chat-form">
+        <input type="text" class="chat-input" id="chat-input" placeholder="Type your message...">
+        <button type="submit" class="chat-submit">Send</button>
+      </form>
+    </div>
+    <script>
+      const chatContainer = document.getElementById("chat-window");
+      const chatForm = document.getElementById("chat-form");
+      const chatInput = document.getElementById("chat-input");
+
+      const apiKey = "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";
+
+      function sendMessage(message) {
+        const requestOptions = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${apiKey}`
+          },
+          body: JSON.stringify({
+            prompt: message,
+            max_tokens: 100,
+            n: 1,
+            stop: ["\n"]
+          })
+        };
+
+        fetch("https://api.openai.com/v1/engines/davinci-codex/completions", requestOptions)
+          .then(response => response.json())
+          .then(data => {
+            const response = data.choices[0].text.trim();
+            addMessage(message, "user");
+            addMessage(response, "bot");
+          })
+          .catch(error => console.error(error));
+      }
+
+      function addMessage(message, sender) {
+        const messageElement = document.createElement("div");
+        messageElement.classList.add("message");
+        messageElement.classList.add(sender);
+        messageElement.innerText = message;
+        chatContainer.appendChild(messageElement);
+      }
+
+      chatForm.addEventListener("submit", event => {
+        event.preventDefault();
+        const message = chatInput.value.trim();
+  if (message) {
+    sendMessage(message);
+    chatInput.value = "";
+  }
+});
