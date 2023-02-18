@@ -1,49 +1,20 @@
-const $cellList = document.querySelectorAll(".js-cell");
-const $nextPlayerArea = document.querySelector(".js-next-player");
-const $gameFinalStatus = document.querySelector(".js-winner");
+const cells = document.querySelectorAll(".js-cell");
+const nextPlayer = document.querySelector(".js-next-player");
+const resultMessage = document.querySelector("#result-message");
+const newGameButton = document.querySelector("#new-game-button");
 
-let gameBoard = new Array(9).fill(null);
-let currentPlayerSymbol = "X";
+let board = ["", "", "", "", "", "", "", "", ""];
+let currentPlayer = "X";
+let gameOver = false;
 
-const flashInterval = 500; // interval in milliseconds
-let flashing = false;
-
-function startFlashing() {
-  flashing = true;
-  setInterval(() => {
-    $gameFinalStatus.style.visibility =
-      $gameFinalStatus.style.visibility === "visible" ? "hidden" : "visible";
-  }, flashInterval);
+function showResult(result) {
+  gameOver = true;
+  resultMessage.textContent = result;
+  newGameButton.style.display = "block";
 }
 
-function stopFlashing() {
-  flashing = false;
-  $gameFinalStatus.style.visibility = "visible";
-}
-
-function clickHandler(event) {
-  const boardIndex = event.target.dataset.index;
-  if (gameBoard[boardIndex] === null) {
-    gameBoard[boardIndex] = currentPlayerSymbol;
-    event.target.innerText = currentPlayerSymbol;
-    if (hasLastMoverWon()) {
-      $gameFinalStatus.innerHTML = `Yippee ki-yay!, ${currentPlayerSymbol} Has Won The Game`;
-      startFlashing();
-    } else if (gameBoard.every((element) => element !== null)) {
-      $gameFinalStatus.innerHTML = `Draw. Both Stupid!.`;
-    } else {
-      currentPlayerSymbol = currentPlayerSymbol === "X" ? "O" : "X";
-      $nextPlayerArea.innerHTML = `Next player: ${currentPlayerSymbol}`;
-    }
-  }
-}
-
-for (let $cell of $cellList) {
-  $cell.addEventListener("click", clickHandler);
-}
-
-function hasLastMoverWon() {
-  let winnerCombos = [
+function checkWinCondition(symbol) {
+  const winConditions = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -53,15 +24,107 @@ function hasLastMoverWon() {
     [0, 4, 8],
     [2, 4, 6]
   ];
-  for (let [i1, i2, i3] of winnerCombos) {
-    if (
-      gameBoard[i1] === currentPlayerSymbol &&
-      gameBoard[i1] === gameBoard[i2] &&
-      gameBoard[i1] === gameBoard[i3]
-    ) {
+
+  for (let i = 0; i < winConditions.length; i++) {
+    let win = true;
+    for (let j = 0; j < winConditions[i].length; j++) {
+      if (board[winConditions[i][j]] !== symbol) {
+        win = false;
+        break;
+      }
+    }
+    if (win) {
       return true;
     }
   }
   return false;
+}
+
+function checkTieCondition() {
+  return board.every(cell => cell !== "");
+}
+
+function handleClick(event) {
+  const cellIndex = event.target.dataset.index;
+
+  if (board[cellIndex] !== "" || gameOver) {
+    return;
+  }
+
+  board[cellIndex] = currentPlayer;
+  event.target.textContent = currentPlayer;
+
+  if (checkWinCondition(currentPlayer)) {
+    showResult(currentPlayer + " wins!");
+  } else if (checkTieCondition()) {
+    showResult("It's a tie!");
+  } else {
+    currentPlayer = currentPlayer === "X" ? "O" : "X";
+    nextPlayer.textContent = "Next player: " + currentPlayer;
+  }
+}
+
+function newGame() {
+  board = ["", "", "", "", "", "", "", "", ""];
+  currentPlayer = "X";
+  gameOver = false;
+
+  cells.forEach(cell => {
+    cell.textContent = "";
+  });
+
+  nextPlayer.textContent = "Next player: " + currentPlayer;
+  resultMessage.textContent = "";
+  newGameButton.style.display = "none";
+}
+
+cells.forEach(cell => {
+  cell.addEventListener("click", handleClick);
+});
+
+newGameButton.addEventListener("click", newGame);
+
+function resetGame() {
+  board = ["", "", "", "", "", "", "", "", ""];
+  currentPlayer = "X";
+  gameOver = false;
+  cells.forEach(cell => {
+    cell.textContent = "";
+  });
+  nextPlayer.textContent = "Next player: " + currentPlayer;
+  resultMessage.textContent = "";
+  newGameButton.style.display = "none";
+}
+newGameButton.addEventListener("click", function() {
+  location.reload();
+});
+
+function showResult(result) {
+  gameOver = true;
+  resultMessage.textContent = result;
+  newGameButton.style.display = "block";
+
+  if (result.includes("wins!")) {
+    for (let i = 0; i < 1000; i++) {
+      const confetti = document.createElement("div");
+      confetti.classList.add("confetti");
+
+      // set the confetti particle's position and rotation randomly
+      const x = Math.random() * window.innerWidth;
+      const y = Math.random() * window.innerHeight;
+      const rotation = Math.random() * 360;
+      confetti.style.left = x + "px";
+      confetti.style.top = y + "px";
+      confetti.style.transform = "rotate(" + rotation + "deg)";
+
+      // add the confetti particle to the page
+      document.body.appendChild(confetti);
+
+      // remove the confetti particle after a delay
+      setTimeout(() => {
+        confetti.remove();
+      }, 50000);
+    }
+  }
 }
 

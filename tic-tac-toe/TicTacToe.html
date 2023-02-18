@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Tic-Tac-Toe</title>
     <link rel="stylesheet" href="./styleTicTacToe.css" />
+
   </head>
   <body>
     <div class="center">
@@ -34,8 +35,18 @@
     </div>
 </div>
     <div class="js-winner">
+      <button id="new-game-button">New Game</button>
+      <div class="js-winner">
+        <span id="result-message"></span>
+        <br>
+        <br>
+        <button id="new-game-button" style="display: none;">New Game</button>
+      </div>
 
     </div>
 <script src="./TicTacToe.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@0.3.1/dist/canvas-confetti.min.js"></script>
+
   </body>
 </html>

@@ -1,8 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>OpenAI Chatbot Example</title>
+    <title>AI Chatbot</title>
+    <div class="blink">
+      <h3>Out Buying a Server...</h3>
+    </div>
+    
+
     <style>
+.blink {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.blink h3 {
+  font-size: 4em;
+  color: red;
+  animation: blinker 3s linear infinite;
+
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
       body {
         background-color: #333;
         color: #eee;
@@ -104,11 +129,19 @@
       </form>
     </div>
     <script>
+
+const blink = document.getElementById('blink');
+
+setInterval(() => {
+  blink.style.visibility = blink.style.visibility === 'hidden' ? 'visible' : 'hidden';
+}, 500);
+
+
       const chatWindow = document.getElementById("chat-window");
       const chatForm = document.getElementById("chat-form");
       const chatInput = document.getElementById("chat-input");
 
-      const apiKey = "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";
+      const apiKey = "";
 
       function sendMessage(message) {
   addMessage(message, "user");
