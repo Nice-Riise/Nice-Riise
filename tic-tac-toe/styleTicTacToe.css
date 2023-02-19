@@ -42,17 +42,25 @@ body {
   }
 
  
+  @media only screen and (max-height: 600px) {
+  
 
+    .board {
+      max-height: 80%;
+    }
+main {
+  max-height: 80%;
+}
+  }
 
   @media only screen and (max-width: 600px) {
     .board {
-      width: fit-content;
-     height: fit-content;
-      
+      width: 80%;
+     
     }
   main {
-    width: fit-content;
-    height: fit-content;
+    width: 50%;
+   
   }
     .cell {
       width: 50%;
