@@ -54,6 +54,7 @@ body {
   @media only screen and (max-width: 600px) {
     .board {
       width: 70%;
+      height: 80%;
       
       
 
@@ -119,28 +120,18 @@ body {
     background-color: rgba(0, 0, 0, 0.1);
   }
   
-  .cell.x {
-    color: #e53935;
-  }
-  
-  .cell.o {
-    color: #1e88e5;
-  }
-  
+ 
   .js-winner {
-    font-size: 3rem;
-    color: #eee;
-    text-align: center;
-    margin: 1rem 0;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
   
-  .js-winner.x {
-    color: #e53935;
-  }
-  
-  .js-winner.o {
-    color: #1e88e5;
-  }
+
+
+
+
   
   .input-container {
     display: flex;
@@ -166,64 +157,23 @@ body {
     background-color: #ddd;
   }
   
-  .confetti {
-    position: fixed;
-    z-index: 9999;
-    width: 10px;
-    height: 10px;
-    background-color: #f7f7f7;
-    border-radius: 50%;
-    box-shadow: 0 0 10px #f7f7f7;
-    animation: confetti 7s ease-out infinite;
+  .blink {
+    animation: blink 0.5s linear infinite alternate;
   }
   
-  
-  .confetti:nth-of-type(1) {
-    left: 10%;
-    top: -10%;
-    animation-delay: 0s;
-  }
-  
-  .confetti:nth-of-type(2) {
-    left: 20%;
-    top: -20%;
-    animation-delay: 0.1s;
-  }
-  
-  .confetti:nth-of-type(3) {
-    left: 30%;
-    top: -30%;
-    animation-delay: 0.2s;
-  }
-  
-  /* add more .confetti:nth-of-type() rules as needed */
-  
-  @keyframes confetti {
+  @keyframes blink {
     0% {
-      transform: translateY(0) rotate(0deg);
+      opacity: 1;
     }
     100% {
-      transform: translateY(-100vh) rotate(1080deg);
+      opacity: 0.5;
     }
   }
-  
-  .confetti {
-    position: absolute;
-    z-index: 9999;
-    width: 10px;
-    height: 10px;
-    background-color: #f7f7f7;
-    border-radius: 50%;
-    box-shadow: 0 0 10px #f7f7f7;
-    animation: confetti 20s ease-out infinite;
+  .center {
+    display: flex;
+    justify-content: center;
+    
+
   }
-  .confetti {
-    position: absolute;
-    z-index: 9999;
-    width: 10px;
-    height: 10px;
-    background-color: #f7f7f7;
-    border-radius: 50%;
-    box-shadow: 0 0 10px #f7f7f7;
-    animation: confetti 20s ease-in infinite;
-  }
+ 
+    

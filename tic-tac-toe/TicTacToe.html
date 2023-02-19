@@ -6,10 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Tic-Tac-Toe</title>
     <link rel="stylesheet" href="./styleTicTacToe.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
+
+
+
+
 
   </head>
   <body>
-    <div class="center">
+    <div class="w3-center">
     <h1>Tic-Tac-Toe</h1>
     
     <div class="js-container">
@@ -22,6 +33,7 @@
         <div class="js-cell cell" data-index="1">-</div>
         <div class="js-cell cell" data-index="2">-</div>
       </div>
+    
       <div class="js-row row">
         <div class="js-cell cell" data-index="3">-</div>
         <div class="js-cell cell" data-index="4">-</div>
@@ -33,18 +45,27 @@
         <div class="js-cell cell" data-index="8">-</div>
       </div>
     </div>
+    
 </div>
     <div class="js-winner">
-      <button id="new-game-button">New Game</button>
-      <div class="js-winner">
-        <span id="result-message"></span>
-        <br>
-        <br>
-        <button id="new-game-button" style="display: none;">New Game</button>
-      </div>
+      
+        
+        
+      <span id="result-message"></span>
+       
+  
 
+      </div>
+      
     </div>
-<script src="./TicTacToe.js"></script>
+    <br><br><br>
+    <div class="center">
+      <p class="fa fa-gamepad fa-2x"></p>
+      <button class=" w3-xlarge  w3-button" id="new-game-button">New <br>Game</button>
+      <p class="fa fa-gamepad fa-2x"></p>
+    </div>
+<script src="./TicTacToe.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@1.29.0/dist/tsparticles.min.js"></script>
 
 
   </body>
