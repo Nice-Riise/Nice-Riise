@@ -54,7 +54,7 @@ body {
   @media only screen and (max-width: 600px) {
     .board {
       width: 70%;
-      height: 80%;
+      height: 50%;
       
       
 
@@ -164,11 +164,16 @@ body {
   @keyframes blink {
     0% {
       opacity: 1;
+      color: red;
     }
     100% {
       opacity: 0.5;
+      color: white;
     }
-  }
+      50% {
+        color: black;
+      }}
+     
   .center {
     display: flex;
     justify-content: center;
