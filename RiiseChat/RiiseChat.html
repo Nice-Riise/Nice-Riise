@@ -1,177 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>AI Chatbot</title>
-    <div class="blink">
-      <h3>Out Buying a Server...</h3>
-    </div>
-    
-
-    <style>
-.blink {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.blink h3 {
-  font-size: 4em;
-  color: red;
-  animation: blinker 3s linear infinite;
-
-}
-
-@keyframes blinker {
-  50% {
-    opacity: 0;
-  }
-}
-
-      body {
-        background-color: #333;
-        color: #eee;
-        font-family: sans-serif;
-        margin: 0;
-        padding: 0;
-      }
-
-      .chat-container {
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-      }
-
-      .chat-window {
-        width: 400px;
-        height: 500px;
-        background-color: #eee;
-        display: flex;
-        flex-direction: column;
-        overflow-y: scroll;
-        padding: 16px;
-        border-radius: 8px;
-      }
-
-      .message {
-        margin-bottom: 16px;
-      }
-
-      .user-message {
-        background-color: #d0e0ff;
-        align-self: flex-start;
-        border-radius: 8px;
-        padding: 8px;
-        max-width: 70%;
-      }
-
-      .bot-message {
-        background-color: #f0f0f0;
-        align-self: flex-end;
-        border-radius: 8px;
-        padding: 8px;
-        max-width: 70%;
-      }
-
-      .chat-input {
-        width: 100%;
-        margin-top: 16px;
-        padding: 8px;
-        border: none;
-        border-radius: 8px;
-        font-size: 16px;
-      }
-
-      .chat-submit {
-        margin-top: 16px;
-        padding: 8px;
-        border: none;
-        border-radius: 8px;
-        font-size: 16px;
-        background-color: #d0e0ff;
-        color: #333;
-        cursor: pointer;
-      }
-      .chat-input {
-  width: 100%;
-  margin-top: 16px;
-  padding: 8px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  background-color: #ddd;
-  color: #333;
-  text-align: center;
-}
-
-.chat-submit {
-  margin-top: 16px;
-  padding: 8px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  background-color: #227093;
-  color: #fff;
-  cursor: pointer;
-}
-
-    </style>
-  </head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI chat BOT</title>
+    <script type="module" src="RiiseChat.js"></script>
+    <link rel="stylesheet" href="./RiiseChat.css">
+</head>
   <body>
-    <div class="chat-container">
-      <div class="chat-window" id="chat-window"></div>
-      <form id="chat-form" class="chat-form">
-        <input type="text" class="chat-input" id="chat-input" placeholder="Type your message...">
-        <button type="submit" class="chat-submit">Send</button>
-      </form>
+    <div id="container" class="container">
+      <img src="https://cdn.pixabay.com/photo/2020/01/02/16/38/chatbot-4736275_960_720.png" height="400vh" alt="Chatbot clipart">
+       <div id="chat" class="chat">
+        <div id="messages" class="messages"></div>
+        <input id="input" type="text" placeholder="Write something..." autocomplete="off" autofocus="true" />
+      </div>
     </div>
-    <script>
-
-const blink = document.getElementById('blink');
-
-setInterval(() => {
-  blink.style.visibility = blink.style.visibility === 'hidden' ? 'visible' : 'hidden';
-}, 500);
-
-
-      const chatWindow = document.getElementById("chat-window");
-      const chatForm = document.getElementById("chat-form");
-      const chatInput = document.getElementById("chat-input");
-
-      const apiKey = "";
-
-      function sendMessage(message) {
-  addMessage(message, "user");
-  
-  const requestOptions = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${apiKey}`
-    },
-    body: JSON.stringify({
-      prompt: message,
-      max_tokens: 100,
-      n: 1,
-      stop: ["\n"]
-    })
-  };
-
-  fetch("https://api.openai.com/v1/engines/davinci-codex/completions", requestOptions)
-    .then(response => response.json())
-    .then(data => {
-      const response = data.choices[0].text.trim();
-      addMessage(response, "bot");
-    })
-    .catch(error => console.error(error));
-}
-function addMessage(message, sender) {
-  const messageElement = document.createElement("div");
-  messageElement.classList.add("message");
-  messageElement.classList.add(sender + "-message");
-  messageElement.innerText = message;
-  chatWindow.appendChild(messageElement); // add the message element to the chat window
-}
+  </body>
