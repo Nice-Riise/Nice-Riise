@@ -116,16 +116,28 @@
   }
   
   /* Mobile */
-  @media only screen and (max-width: 980px) {
+  @media only screen and (max-width: 767px) {
     .container {
       flex-direction: column;
       justify-content: flex-start;
     }
     .chat {
       width: 75vw;
-      margin: 10vw;
+      margin: 10px;
+      height: 400px;
+      
     }
+    .title span {
+      display: none;
+
+    }
+    #robotPic {
+      height: 150px;
+    
+    }
+    
   }
+      
   
   @keyframes clickAnimation {
     0% {
@@ -146,8 +158,8 @@
   .thinking-image {
     
     position: absolute;
-    top: -155px; 
-    left: calc(-5% - 20px); /* center the image horizontally */
+    top: -160px; 
+    left: calc(-10% - 40px); /* center the image horizontally */
     
     transform: scale(0.15);
     display: none;
