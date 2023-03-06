@@ -3,6 +3,8 @@ const chatWindow = document.getElementById('messages');
 const inputField = document.getElementById('input');
 const submitButton = document.getElementById('submit-button');
 const thinkingImage = document.querySelector('.thinking-image');
+
+
 function sendMessage(input) {
   if (!apiKey) {
     addChatEntry("BotoCop", "Sorry, I'm resting. Please try again later.");
@@ -96,3 +98,14 @@ submitButton.addEventListener('click', (event) => {
     
   }
 });
+
+function showThinkingImage() {
+  thinkingImage.style.display = "block";
+}
+
+function hideThinkingImage() {
+  setTimeout(() => {
+    thinkingImage.style.display = "none";
+  }, 2000);
+}
+

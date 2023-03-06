@@ -23,12 +23,20 @@
   }
   
   .container {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
-    
+  }
+  
+  .bulb {
+    position: absolute;
+    top: -35%;
+    left: -12%;
+    transform: scale(0.2);
+    z-index: 1;
   }
   
   .chat {
@@ -77,8 +85,10 @@
   
   #robotPic {
     margin-right: 20px;
+    margin: auto;
   }
- 
+
+
   
   .messages {
     display: flex;
