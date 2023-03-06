@@ -1,10 +1,14 @@
-const apiKey = '';
+const apiKey = 'YOUR_API_KEY_HERE';
 const chatWindow = document.getElementById('messages');
 const inputField = document.getElementById('input');
 const submitButton = document.getElementById('submit-button');
 const thinkingImage = document.querySelector('.thinking-image');
-
 function sendMessage(input) {
+  if (!apiKey) {
+    addChatEntry("BotoCop", "Sorry, I'm resting. Please try again later.");
+    return;
+  }
+
   let requestOptions = {
     method: "POST",
     headers: {
@@ -23,7 +27,6 @@ function sendMessage(input) {
 
   addChatEntry("user", input);
   addChatEntry("BotoCop", "BotoCop is typing...");
-  showThinkingImage(); // show the thinking image
 
   fetch("https://api.openai.com/v1/engines/davinci-codex/completions", requestOptions)
     .then(response => response.json())
@@ -32,17 +35,17 @@ function sendMessage(input) {
       product = product.slice(0, product.lastIndexOf(".")) + ".";
       let humanWords = product.split(" ").filter(word => !word.includes('\x07')).join(" ");
       addChatEntry("BotoCop", humanWords);
-      setTimeout(() => {
-        hideThinkingImage(); // hide the thinking image
-      }, 2000); // hide the thinking image after 2 seconds
-
+      inputField.value = '';
     })
     .catch(error => {
       console.error(error);
       addChatEntry("BotoCop", "Sorry, I'm resting. Please try again later.");
-      hideThinkingImage(); // hide the thinking image in case it's still showing
+      inputField.value = '';
     });
 }
+
+
+
 
 function addChatEntry(sender, message) {
   const messagesContainer = document.getElementById('messages');
@@ -68,26 +71,28 @@ inputField.addEventListener('keydown', (event) => {
     let input = inputField.value.trim();
     if (input) {
       sendMessage(input);
-      inputField.value = '';
     }
+    inputField.value = '';
   }
 });
 
 // Initial bot message
-addChatEntry('BotoCop', '#$%...YO! My Name Is BotoCop! How can I help you?');
+addChatEntry('BotoCop', 'Greetings Human! My Name Is BotoCop! How can I help you?');
 
-function showThinkingImage() {
-  thinkingImage.style.display = 'block';
-}
 
-function hideThinkingImage() {
-  thinkingImage.style.display = 'none';
-}
 
 //button click
-submitButton.addEventListener('click', () => {
+submitButton.addEventListener('click', (event) => {
+  event.preventDefault();
+
   submitButton.classList.add('clicked');
   setTimeout(() => {
     submitButton.classList.remove('clicked');
   }, 500);
+
+  let input = inputField.value.trim();
+  if (input) {
+    sendMessage(input);
+    
+  }
 });
