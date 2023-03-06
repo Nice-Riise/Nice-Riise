@@ -4,16 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI chat BOT</title>
+    <title>BotoCop</title>
     <script type="module" src="RiiseChat.js"></script>
     <link rel="stylesheet" href="./RiiseChat.css">
+    
 </head>
   <body>
+   
+    <h1 class="title">BotoCop! the NOT so friendly Chatbot</h1>
+  
+    <img src="./pics/lightbulb.gif" alt="Thinking" class="thinking-image">
+  
     <div id="container" class="container">
-      <img src="https://cdn.pixabay.com/photo/2020/01/02/16/38/chatbot-4736275_960_720.png" height="400vh" alt="Chatbot clipart">
-       <div id="chat" class="chat">
-        <div id="messages" class="messages"></div>
-        <input id="input" type="text" placeholder="Write something..." autocomplete="off" autofocus="true" />
+      <img id="robotPic" src="./pics/Untitled.png" height="400vh"  alt="Chatbot clipart">
+      
+      <div id="chat-window" class="chat">
+        <div id="messages" class="messages">
+          <div class="bot response"></div>
+        </div>
+        <form id="input-form">
+          <input id="input" type="text" placeholder="Write something..." autocomplete="off" autofocus="true" />
+          <button  type="submit" id="submit-button">⬆️</button>
+        </form>
       </div>
+      
+    </div>
+    <div>
+      
     </div>
   </body>
+</html>
