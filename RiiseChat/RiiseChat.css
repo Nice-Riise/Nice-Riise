@@ -145,7 +145,14 @@
       height: 150px;
     
     }
-    
+    .thinkingImage {
+      transform: scale(0.3) 
+    }
+    .bulb {
+      bottom: 25%;
+      left: -70px;
+    }
+  }
       
   
   @keyframes clickAnimation {
@@ -166,7 +173,7 @@
   
   
     
-  }
+  
   .userColor {
     color: rgb(21, 78, 184);
   }
