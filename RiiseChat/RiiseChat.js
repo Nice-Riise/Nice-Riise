@@ -117,3 +117,4 @@ positionThinkingImage();
 // call the function on window resize events
 window.addEventListener("resize", positionThinkingImage);
 
+

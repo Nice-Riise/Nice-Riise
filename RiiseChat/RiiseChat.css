@@ -136,7 +136,6 @@
     
     }
     
-  }
       
   
   @keyframes clickAnimation {
@@ -155,14 +154,7 @@
     animation: clickAnimation 0.5s;
   }
   
-  .thinking-image {
-    
-    position: absolute;
-    top: -160px; 
-    left: calc(-10% - 40px); /* center the image horizontally */
-    
-    transform: scale(0.15);
-    display: none;
+  
     
   }
   .userColor {
@@ -172,4 +164,9 @@
   .roboColor {
     color: rgb(125, 110, 26);
   }
-  
+  .thinkingImage {
+    width: 60px;
+    height: 60px;
+    padding-left: 150px;
+   margin-top: 100px;
+  }
