@@ -34,7 +34,7 @@ function sendMessage(input) {
       addChatEntry("BotoCop", humanWords);
       setTimeout(() => {
         hideThinkingImage(); // hide the thinking image
-      }, 3000); // hide the thinking image after 2 seconds
+      }, 2000); // hide the thinking image after 2 seconds
 
     })
     .catch(error => {
@@ -62,34 +62,19 @@ function addChatEntry(sender, message) {
 }
 
 
-function handleSubmit(event) {
-  event.preventDefault(); // prevent the default form submission behavior
-  let input = inputField.value.trim();
-  if (input) {
-    sendMessage(input);
-    inputField.value = '';
-  }
-}
-
 inputField.addEventListener('keydown', (event) => {
   if (event.code === 'Enter') {
     event.preventDefault();
-    handleSubmit(event);
+    let input = inputField.value.trim();
+    if (input) {
+      sendMessage(input);
+      inputField.value = '';
+    }
   }
 });
 
-submitButton.addEventListener('click', (event) => {
-  event.preventDefault();
-  handleSubmit(event);
-
-  submitButton.classList.add('clicked');
-  setTimeout(() => {
-    submitButton.classList.remove('clicked');
-  }, 500);
-});
-
 // Initial bot message
-addChatEntry('BotoCop', 'Hi there Human! My Name Is BotoCop! How can I help you?');
+addChatEntry('BotoCop', '#$%...YO! My Name Is BotoCop! How can I help you?');
 
 function showThinkingImage() {
   thinkingImage.style.display = 'block';
@@ -99,22 +84,10 @@ function hideThinkingImage() {
   thinkingImage.style.display = 'none';
 }
 
-function positionThinkingImage() {
-  if (window.innerWidth <= 767) {
-    thinkingImage.style.top = "-250px";
-    thinkingImage.style.left = "calc(-5% - 40px)";
-    thinkingImage.style.transform = "scale(0.07)";
-  } else {
-    thinkingImage.style.top = "";
-    thinkingImage.style.left = "";
-    thinkingImage.style.transform = "";
-  }
-}
-
-// call the function once to initialize the position
-positionThinkingImage();
-
-// call the function on window resize events
-window.addEventListener("resize", positionThinkingImage);
-
-
+//button click
+submitButton.addEventListener('click', () => {
+  submitButton.classList.add('clicked');
+  setTimeout(() => {
+    submitButton.classList.remove('clicked');
+  }, 500);
+});
