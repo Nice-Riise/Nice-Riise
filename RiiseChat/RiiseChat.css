@@ -134,6 +134,10 @@
   
   /* Mobile */
   @media only screen and (max-width: 767px) {
+
+    body {
+      overflow: hidden;
+    }
     .container {
       flex-direction: column;
       justify-content: flex-start;
@@ -144,29 +148,28 @@
     .chat {
       width: 75vw;
       margin: 10px;
-      height: 400px;
+      height: 300px;
       margin-top: 1px;
       padding-top: 1px
     }
     .title span {
       display: none;
+      
 
     }
    
     #robotPic {
       height: 150px;
-      margin-bottom: 1px;
-      padding-bottom: 1px;
+      padding: 1px;
+      margin: 1px;
     
     }
     .thinking-image {
       display: none;
     position: absolute;
    right: -37%;
-   top: 5%;
+   top: 10%;
     transform: translateY(-50%) scale(0.05);
-      
-      
       
     }
     
