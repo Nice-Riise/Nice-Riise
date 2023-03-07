@@ -149,7 +149,7 @@
       width: 75vw;
       margin: 10px;
       height: 300px;
-      margin-top: 1px;
+      margin: 1px;
       padding-top: 1px
     }
     .title span {
@@ -168,14 +168,23 @@
       display: none;
     position: absolute;
    right: -37%;
-   top: -5%;
-    transform: translateY(-50%) scale(0.05);
+   top: -2%;
+    transform: translateY(-50%) scale(0.05);  
+    }
+
+    #input {
+      margin: 1px;
       
     }
+
+    #submit-button {
+      padding: 1px;
+      margin: 1px;
+    }
     
-    
-    .h1 span {
-      display: none;
+    .h1 {
+      display: block;
+      padding-top: 1cm;
     }
   }
       
