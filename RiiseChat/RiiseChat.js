@@ -85,6 +85,10 @@ addChatEntry('BotoCop', 'Greetings Human! My Name Is BotoCop! How can I help you
 
 
 
+
+
+
+
 //button click
 submitButton.addEventListener('click', (event) => {
   event.preventDefault();
@@ -109,20 +113,20 @@ inputField.addEventListener('keydown', (event) => {
     let input = inputField.value.trim();
     if (input) {
       addChatEntry("user", input);
-      toggleThinkingImage(true); // Show the lightbulb when the bot starts typing
+      toggleThinkingImage(true); // Show the lightbulb when the user starts typing
       sendMessage(input);
     }
     inputField.value = '';
   } else {
     clearTimeout(timeoutId); // Cancel the previous setTimeout
-    toggleThinkingImage(true); // Show the lightbulb when the bot is typing
+    toggleThinkingImage(true); // Show the lightbulb 
   }
 });
 
 inputField.addEventListener('keyup', (event) => {
   if (event.code !== 'Enter') {
     timeoutId = setTimeout(() => {
-      toggleThinkingImage(false); // Hide the lightbulb when the bot finishes typing
+      toggleThinkingImage(false); // Hide the lightbulb 
     }, 6000);
   }
 });
@@ -133,7 +137,7 @@ inputField.addEventListener('keyup', (event) => {
 function toggleThinkingImage(isTyping) {
   const thinkingImage = document.querySelector('.thinking-image');
   if (isTyping) {
-    chatWindow.appendChild(thinkingImage); // Add thinking image to chat window
+    chatWindow.appendChild(thinkingImage); // Add thinking image to chat window???????
     thinkingImage.style.display = 'block'; // Show thinking image
   } else {
     thinkingImage.style.display = 'none'; // Hide thinking image
