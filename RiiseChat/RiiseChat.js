@@ -1,8 +1,10 @@
-const apiKey = 'YOUR_API_KEY_HERE';
+const apiKey = 'APIKEY';
 const chatWindow = document.getElementById('messages');
 const inputField = document.getElementById('input');
 const submitButton = document.getElementById('submit-button');
 const thinkingImage = document.querySelector('.thinking-image');
+
+
 
 
 function sendMessage(input) {
@@ -99,13 +101,41 @@ submitButton.addEventListener('click', (event) => {
   }
 });
 
-function showThinkingImage() {
-  thinkingImage.style.display = "block";
-}
+let timeoutId;
 
-function hideThinkingImage() {
-  setTimeout(() => {
-    thinkingImage.style.display = "none";
-  }, 2000);
-}
+inputField.addEventListener('keydown', (event) => {
+  if (event.code === 'Enter') {
+    event.preventDefault();
+    let input = inputField.value.trim();
+    if (input) {
+      addChatEntry("user", input);
+      toggleThinkingImage(true); // Show the lightbulb when the bot starts typing
+      sendMessage(input);
+    }
+    inputField.value = '';
+  } else {
+    clearTimeout(timeoutId); // Cancel the previous setTimeout
+    toggleThinkingImage(true); // Show the lightbulb when the bot is typing
+  }
+});
 
+inputField.addEventListener('keyup', (event) => {
+  if (event.code !== 'Enter') {
+    timeoutId = setTimeout(() => {
+      toggleThinkingImage(false); // Hide the lightbulb when the bot finishes typing
+    }, 6000);
+  }
+});
+
+
+
+
+function toggleThinkingImage(isTyping) {
+  const thinkingImage = document.querySelector('.thinking-image');
+  if (isTyping) {
+    chatWindow.appendChild(thinkingImage); // Add thinking image to chat window
+    thinkingImage.style.display = 'block'; // Show thinking image
+  } else {
+    thinkingImage.style.display = 'none'; // Hide thinking image
+  }
+}

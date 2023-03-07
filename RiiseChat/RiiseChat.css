@@ -33,10 +33,17 @@
   
   .bulb {
     position: absolute;
-    top: -35%;
-    left: -12%;
-    transform: scale(0.2);
+   
+    transform: scale(0.3);
     z-index: 1;
+  }
+
+  .thinking-image {
+    display: none;
+    position: absolute;
+   right: 55%;
+   top: 10%;
+    transform: translateY(-50%) scale(0.2);
   }
   
   .chat {
@@ -131,26 +138,41 @@
       flex-direction: column;
       justify-content: flex-start;
     }
+    
+    
+
     .chat {
       width: 75vw;
       margin: 10px;
       height: 400px;
-      
+      margin-top: 1px;
+      padding-top: 1px
     }
     .title span {
       display: none;
 
     }
+   
     #robotPic {
       height: 150px;
+      margin-bottom: 1px;
+      padding-bottom: 1px;
     
     }
-    .thinkingImage {
-      transform: scale(0.3) 
+    .thinking-image {
+      display: none;
+    position: absolute;
+   right: -37%;
+   top: -1%;
+    transform: translateY(-50%) scale(0.05);
+      
+      
+      
     }
-    .bulb {
-      bottom: 25%;
-      left: -70px;
+    
+    
+    .h1 span {
+      display: none;
     }
   }
       
@@ -181,4 +203,5 @@
   .roboColor {
     color: rgb(125, 110, 26);
   }
+  
   
