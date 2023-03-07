@@ -1,4 +1,4 @@
-const apiKey = 'APIKEY';
+const apiKey = '';
 const chatWindow = document.getElementById('messages');
 const inputField = document.getElementById('input');
 const submitButton = document.getElementById('submit-button');
