@@ -1,10 +1,12 @@
-const apiKey = 'API';
+const apiKey = 'Y';
 const chatWindow = document.getElementById('messages');
 const inputField = document.getElementById('input');
 const submitButton = document.getElementById('submit-button');
 const thinkingImage = document.querySelector('.thinking-image');
 
-
+var meldinger = [
+  {"role": "system", "content": "You are a helpful assistant."},
+  ]
 
 
 function sendMessage(input) {
@@ -13,6 +15,8 @@ function sendMessage(input) {
     return;
   }
 
+  meldinger.push({"role":"user", "content":input})
+
   let requestOptions = {
     method: "POST",
     headers: {
@@ -20,25 +24,25 @@ function sendMessage(input) {
       "Authorization": `Bearer ${apiKey}`
     },
     body: JSON.stringify({
-      prompt: input,
-      max_tokens: 150,
-      temperature: 0.7,
-      top_p: 1,
-      frequency_penalty: 0,
-      presence_penalty: 0
+      max_tokens: 25,
+      messages: meldinger,
+      
+      model: "gpt-3.5-turbo",
+     
     })
   };
 
   addChatEntry("user", input);
   addChatEntry("BotoCop", "BotoCop is typing...");
 
-  fetch("https://api.openai.com/v1/engines/davinci-codex/completions", requestOptions)
+  fetch("https://api.openai.com/v1/chat/completions", requestOptions)
     .then(response => response.json())
     .then(data => {
-      let product = data.choices[0].text;
-      product = product.slice(0, product.lastIndexOf(".")) + ".";
-      let humanWords = product.split(" ").filter(word => !word.includes('\x07')).join(" ");
-      addChatEntry("BotoCop", humanWords);
+      let product = data.choices[0].message.content;
+     
+      addChatEntry("BotoCop", product);
+      meldinger.push(data.choices[0].message);
+      console.log(data);
       inputField.value = '';
     })
     .catch(error => {
