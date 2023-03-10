@@ -10,20 +10,9 @@
 
             //By default the submitt button is disabled
             document.querySelector("#submit").disabled = true;
-<<<<<<< Updated upstream
-            //to not submitt empty list item
-            document.querySelector("#task").onkeyup = () => {
-                if (document.querySelector("#task").value.length > 0) {
-                    document.querySelector("#submit").disabled = false; 
-                } else {
-                    document.querySelector("#submit").disabled = true;
-                }
-                
-=======
 
             document.querySelector("#tasks").onkeyup = () => {
                 document.querySelector("#submit").disabled = false; 
->>>>>>> Stashed changes
             }
             
 
@@ -36,13 +25,7 @@
                 li.innerHTML = task;
 
                 document.querySelector("#tasks").append(li);
-<<<<<<< Updated upstream
-                document.querySelector("#task").value = "";
-
-                document.querySelector("#submit").disabled = true;
-=======
                 document.querySelector("#tasks").value = " ";
->>>>>>> Stashed changes
 
                // console.log(task);
 
@@ -66,10 +49,4 @@
    
     
 </body>
-<<<<<<< Updated upstream
 </html>
-
-vodeo stopped at 1:19:37
-=======
-</html>
->>>>>>> Stashed changes
