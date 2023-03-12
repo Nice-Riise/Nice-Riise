@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Converter</title>
+  <script src="./CurrencyConverter.js"></script>
+  <style>
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .left {
+      width: 40%;
+    }
+
+    .right {
+      width: 40%;
+    }
+
+    .result {
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Currency Converter</h1>
+
+
+  <!-- //solution 1
+  <div class="container">
+    <div class="left">
+      <label for="fromCurrency">From Currency:</label>
+      <select name="fromCurrency" id="fromCurrency">
+        <option value="CAD">CAD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+        <option value="USD">USD</option>
+        <option value="NOK">NOK</option>
+      </select>
+
+      <label for="Amount">Amount to convert:</label>
+      <input type="text" id="Amount">
+    </div>
+
+    <div class="right">
+      <label for="targetCurrency">Target Currency:</label>
+      <select name="targetCurrency" id="targetCurrency">
+        <option value="CAD">CAD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+        <option value="USD">USD</option>
+        <option value="NOK">NOK</option>
+      </select>
+  
+      <button id="convert">Convert</button>
+
+      <div >
+        <form action=""></form>
+        <br>
+        <label for="Result">Result:</label>
+        <span class="result" id="Result"></span>
+      </div>
+    </div>
+  </div>
+  -->
+<form>
+  <input placeholder="Currency" id="currency" type="text">
+  <input type="submit" value="Convert" id="">
+</form>
+
+<diV id="result">
+
+
+</diV>
+
+
+</body>
+</html>
