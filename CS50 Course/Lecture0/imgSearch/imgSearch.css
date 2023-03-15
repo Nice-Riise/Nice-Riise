@@ -1,0 +1,137 @@
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+#header {
+	background-color: #f2f2f2;
+	padding: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#logo-container {
+	display: none;
+}
+
+#logo-search-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#logo-container-2 {
+	margin-bottom: 20px;
+}
+
+#logo-2 {
+	width: 272px;
+	height: 92px;
+}
+
+#links-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  
+  #links-container a {
+    margin-left: 20px;
+    color: #1a0dab;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  #links-container a:hover {
+    text-decoration: underline;
+  }
+
+#links-container a:hover {
+	text-decoration: underline;
+}
+
+#search-container {
+	background-color: #fff;
+	padding: 20px;
+}
+
+#search-form {
+	display: flex;
+	align-items: center;
+}
+
+#search-field-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#search-box {
+	flex-grow: 1;
+	padding: 10px;
+	border: none;
+	background-color: transparent;
+	font-size: 16px;
+}
+
+#buttons-container {
+	margin-top: 20px;
+	display: flex;
+    
+}
+
+#search-button {
+	padding: 10px;
+	border: none;
+	background-color: #f2f2f2;
+	cursor: pointer;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+#search-button:hover {
+	background-color: #e6e6e6;
+    border: solid blue;
+   
+   
+}
+
+#lucky-button {
+    padding: 10px;
+	border: none;
+	background-color: #f2f2f2;
+	cursor: pointer;
+    margin: 5px;
+    border-radius: 5px;
+	
+}
+#lucky-button:hover {
+    background-color: #e6e6e6;
+    border: solid blue;
+}
+
+    #search-box {
+        flex-grow: 1;
+        width: 600px;
+        padding: 10px;
+        border: solid blue;
+        background-color: transparent;
+        font-size: 16px;
+        border-radius: 20px;
+    }
+
+    #imagesHeading {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin-top: -8%;
+        color: blue;
+       
+    }
+    
