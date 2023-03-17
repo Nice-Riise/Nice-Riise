@@ -2,42 +2,27 @@ body {
     font-family: Arial, sans-serif;
     font-size: 16px;
     color: #222;
-    background-color: #f2f2f2;
+    background-color: #fff;
 }
 
 h1 {
     font-size: 28px;
     font-weight: bold;
     margin: 20px 0 30px;
-    text-align: center;
+    text-align: left;
 }
 
-form {
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
 
-label {
-    font-size: 15px;
-    font-weight: bold;
-    display: inline-block;
-    width: 200px;
-    text-align: right;
-    margin-right: 10px;
-}
 
-.textinput {
-    width: 300px;
-}
+
+
 
 input[type="submit"]:hover {
     background-color: #2d73d2;
 }
 
 button[type="submit"] {
-    display: block;
+   
     margin: 0 auto;
     padding: 10px;
     font-size: 18px;
@@ -46,9 +31,11 @@ button[type="submit"] {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+   
 }
 
 button[type="submit"]:hover {
+    
     background-color: #2d73d2;
 }
 
@@ -63,8 +50,82 @@ button[type="submit"]:hover {
     height: auto;
 }
 
+
+
+
+nav {
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-end;
+   padding: 30px;
+}
+
+#heading {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 235px;
+}
+
+
 .field {
     display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center; 
+    margin: 10px;
+    
+}
+
+.textinput {
+   
+    width: 420px;
+    margin-left: 10px; 
+    margin-right: 10px;
+    padding: 7px;
+}
+
+label {
+    font-size: 12px;
+    font-weight: bold;
+    width: auto; 
+    display: inline-block;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 5px;
+    padding-bottom: 30px;
+    background-color: #fff;
+    border: 1px solid black;
+   
+    
+}
+
+#textField0 {
+    margin-right: 66px;
+}
+
+#textField2 {
+    margin-right: 56px;
+}
+#textField3 {
+    margin-right: 29px;
+}
+
+input#submitButton {
+   margin-left: 535px;
+   margin-right: auto;
+   padding: 8px;
+
+}
+
+
+h3 {
+    color: rgb(186, 60, 60);
+    margin-left: 40px;
+    margin-top: 50px;
 }

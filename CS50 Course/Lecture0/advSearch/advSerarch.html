@@ -7,34 +7,56 @@
    
 </head>
 <body>
+    
+		<nav>
+            <a href="/CS50 Course/Lecture0/index.html">Back to Noodle</a>
+			
+			
+        </nav>
+
+
     <div id="miniLogo">
         <a href="/CS50 Course/Lecture0/index.html"><img src="./pic/55ia55cjrxe21.png" alt="Noodle"></a>
+        <h3>Advanced Search</h3>
     </div>
 <br>
 <br>
-	
-<form action="https://google.com/search" name="f">
-  <div class="field">
-      <label for="field1">all these words:</label>
-      <input type="text" class="textinput" id="field1" value=""  name="as_q">
-  </div>
-  <br>
-  <div class="field">
-      <label for="field2">this exact word or phrase: </label>
-      <input type="text" class="textinput" id="field2" value=""  name="as_epq">
-  </div>
-  <br>
-  <div class="field">
-      <label for="field3">any of this words: </label>
-      <input type="text" class="textinput" id="field3" value=""  name="as_oq">
-  </div>
-  <br>
-  <div class="field">
-      <label for="field4">none of these words: </label>
-      <input type="text" class="textinput" id="field4" value=""  name="as_eq">
-  </div>
+<div id="heading">
+    <h4 id="headingLeft">Find Pages...</h4>         
+    <h4 id="headingRight">Do this directly in the search field:</h4>
+</div>
 
-		<input type="submit" value="Google Search">
+
+<form action="https://google.com/search" name="f">
+    
+
+  <div class="field">
+      <label id="textField0">With all these words:</label>
+      <input type="text" class="textinput"  value=""  name="as_q">
+      <label  for="textField0-0">Enter the important words: golden retriever puppy</label>
+  </div>
+  <br>
+  <div class="field">
+      <label id="textField1">with exactly this word or phrase:</label>
+      <input type="text" class="textinput"  value=""  name="as_epq">
+      <label for="textField1-1">Put exact words in quotation marks: "fox terrier"</label>
+  </div>
+  <br>
+  <div class="field">
+      <label id="textField2">With any of this words: </label>
+      <input type="text" class="textinput"  value=""  name="as_oq">
+      <label for="textField2-2">Enter OR between all the words you want to use: miniature OR standard</label>
+  </div>
+  <br>
+  <div class="field">
+      <label id="textField3">without any of these words:</label>
+      <input type="text" class="textinput"  value=""  name="as_eq">
+      <label for="textField3-3">Insert a minus sign right before words you don't want to use: - rodent, - "Jack Russell"</label>
+  </div>
+  
+    <input id="submitButton" type="submit" value="Google Search">
+    
 	</form>
+    
 </body>
 </html>
