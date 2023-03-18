@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colors</title>
+<script>
+
+            //used the => insted of the function word
+document.addEventListener("DOMContentLoaded", /*function*/ () => {
+
+    /*change color to set color 1st long solution
+
+            document.querySelector("#red").onclick = function() {
+                document.querySelector("#firstHeding").style.color = "red";
+            }
+
+             //change color to set color
+             document.querySelector("#blue").onclick = function() {
+                document.querySelector("#firstHeding").style.color = "blue";
+            }
+
+             //change color to set color
+             document.querySelector("#green").onclick = function() {
+                document.querySelector("#firstHeding").style.color = "green";
+            }
+            */
+    /* color set change 2nd solution (faster Better)
+                        //used the => insted of the function word 
+            document.querySelectorAll("button").forEach(/*function*//*button => {
+                button.onclick = function() {
+                    document.querySelector("#firstHeding").style.color = button.dataset.color;
+                }
+            }) 
+            */
+
+            // third solution with drop down select options menu 
+
+            document.querySelector("select").onchange = function() {
+                document.querySelector("#firstHeding").style.color = this.value;
+            }
+
+
+        });
+
+</script>
+
+</head>
+<body>
+    <!-- first solution 
+    
+    <button data-color="red">Red</button>
+    <button data-color="blue">Blue</button>
+    <button data-color="green">Green</button>
+    -->
+
+    <!--second solution-->
+    <h1 id="firstHeding">CS50 Color</h1>
+    <select>
+        <option value="black">Black</option>
+        <option value="red">Red</option>
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+    </select>
+
+</body>
+</html>

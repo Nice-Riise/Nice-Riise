@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Google Search</title>
+	<title>Noodle Search</title>
 	<link rel="stylesheet" type="text/css" href="./imgSearch.css">
     <script src="./imgSearch.js"></script>
 </head>
@@ -13,11 +13,7 @@
 		<div id="links-container">
 
 			<!--javascript:javascript:history.go(-1)-->
-			<a href="/CS50 Course/Lecture0/index.html">Back to Noodle</a>
-			
-			
-			<a href="#">More</a>
-			
+			<a href="/CS50 Course/Lecture0/index.html">Back to Noodle</a>	
 		</div>
 	</div>
 	<div id="search-container">
@@ -26,9 +22,11 @@
 				<img id="logo-2" src="./55ia55cjrxe21.png" alt="Noodle">
                 <p id="imagesHeading">Images</p>
 			</div>
-			<form id="search-form" action="http://www.google.com/images?q=">
+
+			<form id="search-form" action="http://www.google.com/search">
 				<div id="search-field-container">
 					<input type="text" id="search-box" name="q" placeholder="Search for Images">
+					<input type="hidden" name="tbm" value="isch">
 					<div id="buttons-container">
                         <button type="submit" id="search-button">Image Search</button>
 						

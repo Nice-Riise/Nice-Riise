@@ -5,7 +5,7 @@ body {
 }
 
 #header {
-	background-color: #f2f2f2;
+	background-color: #fff;
 	padding: 20px;
 	display: flex;
 	align-items: center;
@@ -27,8 +27,9 @@ body {
 }
 
 #logo-2 {
-	width: 272px;
-	height: 92px;
+    margin-top: 180px;
+	width: 280px;
+	height: 120px;
 }
 
 #links-container {
@@ -97,7 +98,7 @@ body {
 
 #search-button:hover {
 	background-color: #e6e6e6;
-    border: solid blue;
+    border: solid blue 1px;
    
    
 }
@@ -120,11 +121,15 @@ body {
         flex-grow: 1;
         width: 600px;
         padding: 10px;
-        border: solid blue;
+        border: solid blue 1px;
         background-color: transparent;
         font-size: 16px;
         border-radius: 20px;
     }
+    
+    #search-box:hover {
+		background-color: #e6e6e6;
+	}
 
     #imagesHeading {
         display: flex;
