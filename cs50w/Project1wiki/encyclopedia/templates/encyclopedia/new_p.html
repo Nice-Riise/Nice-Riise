@@ -8,8 +8,16 @@
     <h1>New Page</h1>
     <h3>{{ message|safe }}</h3>
 
-    <form action="{% url 'new_page' %}" method="POST" ></form>
-    <input type="text" name="title" placeholder="Enter Text">
-  
+    <form action="{% url 'new_page' %}" method="POST"   >
+        <label>Title:</label>
+    <input type="text" name="title" placeholder="Enter a Title">
+    <br>
+    <br>
+    <label>Content:</label>
+    <br>
+    <textarea name="content" style="height: 200px;" ></textarea>
+    <br>
+    <input type="submit" value="Add page" >
+</form>
 
 {% endblock %}
