@@ -45,7 +45,25 @@ def search(request):
             "title": entry_search,
             "content": html_content
         })
+
     else:
-        return render(request, "encyclopedia/error.html", {
-            "message": f"The entry <u>{entry_search}</u> does not exist."
-        })
+        allEntries = util.list_entries()
+
+        recommendation = []
+
+        for entry in allEntries:
+            if entry_search.lower() in entry.lower():
+                recommendation.append(entry)
+                return render(request, "encyclopedia/search.html", {
+                    "recommendation": recommendation
+                })
+
+   # else:
+     #   return render(request, "encyclopedia/error.html", {
+      #      "message": f"The entry <u>{entry_search}</u> does not exist."
+       # })
+
+
+def new_page(request):
+    if request.method == "GET":
+        return render(request, "encyclopedia/new_p.html")

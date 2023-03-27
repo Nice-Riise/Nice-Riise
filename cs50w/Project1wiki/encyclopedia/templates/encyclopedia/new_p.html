@@ -1,0 +1,15 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    New Page
+{% endblock %}
+
+{% block body %}
+    <h1>New Page</h1>
+    <h3>{{ message|safe }}</h3>
+
+    <form action="{% url 'new_page' %}" method="POST" ></form>
+    <input type="text" name="title" placeholder="Enter Text">
+  
+
+{% endblock %}
