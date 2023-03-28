@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import markdown2 as markdown
+import random
 
 
 from . import util
@@ -34,6 +35,8 @@ def entry(request, title):
             "title": title, "content": html_content
         })
 
+# the search function
+
 
 def search(request):
     if request.method == "POST":
@@ -58,12 +61,77 @@ def search(request):
                     "recommendation": recommendation
                 })
 
-   # else:
-     #   return render(request, "encyclopedia/error.html", {
-      #      "message": f"The entry <u>{entry_search}</u> does not exist."
-       # })
 
-
+# Make a new page and convvert "md"
 def new_page(request):
     if request.method == "GET":
+
         return render(request, "encyclopedia/new_p.html")
+    else:
+        title = request.POST['title']
+        content = request.POST['content']
+        tilteExist = util.get_entry(title)
+
+    if tilteExist is not None:
+        return render(request, "encyclopedia/error.html", {
+            "message": "Page already exists"
+        })
+
+    else:
+        util.save_entry(title, content)
+
+        html_content = convert_md_to_html(title)
+
+        return render(request, "encyclopedia/entry.html", {
+            "title": title,
+            "content": html_content
+
+        })
+
+# make the page editable
+
+
+def edit_page(request):
+
+    if request.method == 'POST':
+        title = request.POST['entry_title']
+        content = util.get_entry(title)
+
+        return render(request, "encyclopedia/edit_page.html", {
+            "title": title,
+            "content": content
+        })
+
+
+# save the edited page and convert "md"
+
+
+def save_edit(request):
+
+    if request.method == "POST":
+        title = request.POST['title']
+        content = request.POST['content']
+
+        util.save_entry(title, content)
+
+    html_content = convert_md_to_html(title)
+
+    return render(request, "encyclopedia/entry.html", {
+        "title": title,
+        "content": html_content
+
+    })
+
+# Random page function
+
+
+def random(request):
+
+    allEntries = util.list_entries()
+    rand_entry = random.choice(allEntries)
+    html_content = convert_md_to_html(rand_entry)
+
+    return render(request, "encyclopedia/entry.html", {
+        "title": rand_entry,
+        "content": html_content
+    })
