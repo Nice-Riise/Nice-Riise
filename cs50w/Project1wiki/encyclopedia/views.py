@@ -125,7 +125,7 @@ def save_edit(request):
 # Random page function
 
 
-def random(request):
+def random_page(request):
 
     allEntries = util.list_entries()
     rand_entry = random.choice(allEntries)

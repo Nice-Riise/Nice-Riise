@@ -8,5 +8,5 @@ urlpatterns = [
     path("new_p/", views.new_page, name="new_page"),
     path("edit_page/", views.edit_page, name="edit_page"),
     path("save_edit/", views.save_edit, name="save_edit"),
-    path("random/", views.random, name="random"),
+    path("random_page/", views.random_page, name="random_page"),
 ]
