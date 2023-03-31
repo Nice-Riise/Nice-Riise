@@ -1,1 +1,3 @@
-yes is a positive word
+# Yes
+
+Yes is a positive word!

@@ -43,23 +43,27 @@ def search(request):
         entry_search = request.POST['q']
         html_content = convert_md_to_html(entry_search)
 
-    if html_content is not None:
-        return render(request, "encyclopedia/entry.html", {
-            "title": entry_search,
-            "content": html_content
-        })
+        if html_content is not None:
+            return render(request, "encyclopedia/entry.html", {
+                "title": entry_search,
+                "content": html_content
+            })
+        else:
+            allEntries = util.list_entries()
 
-    else:
-        allEntries = util.list_entries()
+            recommendation = []
 
-        recommendation = []
+            for entry in allEntries:
+                if entry_search.lower() in entry.lower():
+                    recommendation.append(entry)
 
-        for entry in allEntries:
-            if entry_search.lower() in entry.lower():
-                recommendation.append(entry)
-                return render(request, "encyclopedia/search.html", {
-                    "recommendation": recommendation
-                })
+            return render(request, "encyclopedia/search.html", {
+                "recommendation": recommendation
+            })
+
+    return render(request, "encyclopedia/index.html", {
+        "entries": util.list_entries()
+    })
 
 
 # Make a new page and convvert "md"
@@ -78,15 +82,16 @@ def new_page(request):
         })
 
     else:
-        util.save_entry(title, content)
+        # Add title as a heading in the content
+        content = f"# {title}\n\n{content}"
+    util.save_entry(title, content)
 
-        html_content = convert_md_to_html(title)
+    html_content = convert_md_to_html(title)
 
-        return render(request, "encyclopedia/entry.html", {
-            "title": title,
-            "content": html_content
-
-        })
+    return render(request, "encyclopedia/entry.html", {
+        "title": title,
+        "content": html_content
+    })
 
 # make the page editable
 
@@ -105,22 +110,22 @@ def edit_page(request):
 
 # save the edited page and convert "md"
 
-
 def save_edit(request):
-
     if request.method == "POST":
         title = request.POST['title']
         content = request.POST['content']
 
+        # Add title as a heading in the content
+        content = f"# {title}\n\n{content}"
         util.save_entry(title, content)
 
-    html_content = convert_md_to_html(title)
+        html_content = convert_md_to_html(title)
 
-    return render(request, "encyclopedia/entry.html", {
-        "title": title,
-        "content": html_content
+        return render(request, "encyclopedia/entry.html", {
+            "title": title,
+            "content": html_content
+        })
 
-    })
 
 # Random page function
 
