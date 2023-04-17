@@ -35,7 +35,11 @@ body, html {
     align-items: center;
     justify-content: center;
 }
-
+  .gas-cards-iframe {
+    scale: 70%;
+    display: flex;
+    align-items: center;
+  }
  }
 
 
