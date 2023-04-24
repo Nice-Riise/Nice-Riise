@@ -9,6 +9,9 @@ class User(AbstractUser):
 class Category(models.Model):
     categoryName = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.categoryName
+
 
 class Listing(models.Model):
 
@@ -21,3 +24,6 @@ class Listing(models.Model):
         User, on_delete=models.CASCADE, blank=True, null=True, related_name="user")
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, blank=True, null=True, related_name="category")
+
+    def __str__(self):
+        return self.title
