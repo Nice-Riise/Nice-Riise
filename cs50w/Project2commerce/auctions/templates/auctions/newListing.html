@@ -1,0 +1,9 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+   <h2>Bike: {{ newListing.title }}</h2>
+   <img class="rounded mx-auto d-block" style="width: 50%;" src="{{ newListing.image }}" alt="{{ newListing.title }}">
+   <p>{{ newListing.description }}</p>
+   <p>Listed By User: {{ newListing.owner }}</p>
+   <h5>Buy Now Price: {{ newListing.price }}$</h5>
+{% endblock %}
