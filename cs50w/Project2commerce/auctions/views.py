@@ -9,9 +9,25 @@ from .models import User, Category, Listing
 
 def index(request):
     activeListings = Listing.objects.filter(activeStatus=True)
+    allCategories = Category.objects.all()
     return render(request, "auctions/index.html", {
-        "listings": activeListings
+        "listings": activeListings,
+        "categories": allCategories,
     })
+
+
+def sortCategories(request):
+
+    if request.method == "POST":
+        getCategory = request.POST['category']
+        category = Category.objects.get(categoryName=getCategory)
+        activeListings = Listing.objects.filter(
+            activeStatus=True, category=category)
+        allCategories = Category.objects.all()
+        return render(request, "auctions/index.html", {
+            "listings": activeListings,
+            "categories": allCategories,
+        })
 
 
 def createListing(request):
