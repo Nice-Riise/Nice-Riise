@@ -13,6 +13,13 @@ class Category(models.Model):
         return self.categoryName
 
 
+class Bid(models.Model):
+    bid = models.IntegerField(default=0)
+
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, blank=True, null=True, related_name="userBid")
+
+
 class Listing(models.Model):
 
     title = models.CharField(max_length=30)
@@ -21,7 +28,8 @@ class Listing(models.Model):
 
     image = models.CharField(max_length=4000)
 
-    price = models.FloatField()
+    price = models.ForeignKey(
+        Bid, on_delete=models.CASCADE, blank=True, null=True, related_name="bidPrice")
 
     activeStatus = models.BooleanField(default=True)
 
@@ -41,10 +49,13 @@ class Listing(models.Model):
 
 
 class Comment(models.Model):
+
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, blank=True, null=True, related_name="userComment")
+
     newListing = models.ForeignKey(
         Listing, on_delete=models.CASCADE, blank=True, null=True, related_name="newListingComment")
+
     message = models.CharField(max_length=200)
 
     def __str__(self):

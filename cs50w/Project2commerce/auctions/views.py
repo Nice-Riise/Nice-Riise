@@ -4,16 +4,46 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from .models import User, Category, Listing, Comment
+from .models import User, Category, Listing, Comment, Bid
 
 
 def newListing(request, id):
     objectsInList = Listing.objects.get(pk=id)
     isItemInWatchlist = request.user in objectsInList.watchlist.all()
+    allComments = Comment.objects.filter(newListing=objectsInList)
     return render(request, "auctions/newListing.html", {
         "newListing": objectsInList,
-        "isItemInWatchlist": isItemInWatchlist
+        "isItemInWatchlist": isItemInWatchlist,
+        "allComments": allComments
+
     })
+
+
+def addBid(request, id):
+    newBid = request.POST['newBid']
+    objectsInList = Listing.objects.get(pk=id)
+    isItemInWatchlist = request.user in objectsInList.watchlist.all()
+    allComments = Comment.objects.filter(newListing=objectsInList)
+    if int(newBid) > objectsInList.price.bid:
+        updateBid = Bid(user=request.user, bid=int(newBid))
+        updateBid.save()
+        objectsInList.price = updateBid
+        objectsInList.save()
+        return render(request, "auctions/newListing.html", {
+            "newListing": objectsInList,
+            "message": "Bid Recived",
+            "update": True,
+            "isItemInWatchlist": isItemInWatchlist,
+            "allComments": allComments
+        })
+    else:
+        return render(request, "auctions/newListing.html", {
+            "newListing": objectsInList,
+            "message": "Bid Failed",
+            "update": False,
+            "isItemInWatchlist": isItemInWatchlist,
+            "allComments": allComments
+        })
 
 
 def addComment(request, id):
@@ -21,9 +51,12 @@ def addComment(request, id):
     objectsInList = Listing.objects.get(pk=id)
     message = request.POST['newComment']
     newComment = Comment(
-        athor=activeUser,
-        listing=objectsInList,
+        author=activeUser,
+        newListing=objectsInList,
         message=message)
+
+    newComment.save()
+
     return HttpResponseRedirect(reverse("newListing", args=(id, )))
 
 
@@ -44,7 +77,7 @@ def removeFromWatchlist(request, id):
     return HttpResponseRedirect(reverse("newListing", args=(id, )))
 
 
-def addFromWatchlist(request, id):
+def addToWatchlist(request, id):
     objectsInList = Listing.objects.get(pk=id)
     activeUser = request.user
     objectsInList.watchlist.add(activeUser)
@@ -94,12 +127,16 @@ def createListing(request):
         # get complete listing info
         categoryData = Category.objects.get(categoryName=category)
 
+        # new Bid
+        bid = Bid(bid=int(price), user=currentUser)
+        bid.save()
+
         # New user listing
         newListing = Listing(
             title=title,
             description=description,
             image=image,
-            price=float(price),
+            price=bid,
             category=categoryData,
             owner=currentUser
         )
