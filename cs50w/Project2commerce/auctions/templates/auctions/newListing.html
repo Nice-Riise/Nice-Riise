@@ -36,7 +36,7 @@
    <img class="rounded mx-auto d-block" style="width: 30%;" src="{{ newListing.image }}" alt="{{ newListing.title }}">
    
 
-   <div class="container" >
+   <div class="container">
         {% if message %}
         {% if update %}
     <div class="alert alert-success" role="alert"> {{ message }}</div>
@@ -44,11 +44,17 @@
     <div class="alert alert-danger" role="alert"> {{ message }}</div>
         {% endif %}
         {% endif %}
-    
-
     </div>
    
+    
+    {% if not newListing.activeStatus and user == newListing.price.user %} 
+    <div class="alert alert-success" role="alert">
+        Congratulations! You Won the Auction!
    
+    </div>
+        {% endif %}
+
+
    <p>{{ newListing.description }}</p>
    <p>Listed By User: {{ newListing.owner }}</p>
    <h5>Current Price: {{ newListing.price.bid }}$</h5>
