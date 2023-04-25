@@ -11,10 +11,32 @@ def newListing(request, id):
     objectsInList = Listing.objects.get(pk=id)
     isItemInWatchlist = request.user in objectsInList.watchlist.all()
     allComments = Comment.objects.filter(newListing=objectsInList)
+    isOwner = request.user.username == objectsInList.owner.username
+
     return render(request, "auctions/newListing.html", {
         "newListing": objectsInList,
         "isItemInWatchlist": isItemInWatchlist,
-        "allComments": allComments
+        "allComments": allComments,
+        "isOwner": isOwner
+
+    })
+
+
+def endAuction(request, id):
+    objectsInList = Listing.objects.get(pk=id)
+    objectsInList.activeStatus = False
+    objectsInList.save()
+    isOwner = request.user.username == objectsInList.owner.username
+    isItemInWatchlist = request.user in objectsInList.watchlist.all()
+    allComments = Comment.objects.filter(newListing=objectsInList)
+
+    return render(request, "auctions/newListing.html", {
+        "newListing": objectsInList,
+        "isItemInWatchlist": isItemInWatchlist,
+        "allComments": allComments,
+        "isOwner": isOwner,
+        "update": True,
+        "message": "Congratulations! Your auction is closed"
 
     })
 
@@ -24,17 +46,20 @@ def addBid(request, id):
     objectsInList = Listing.objects.get(pk=id)
     isItemInWatchlist = request.user in objectsInList.watchlist.all()
     allComments = Comment.objects.filter(newListing=objectsInList)
+    isOwner = request.user.username == objectsInList.owner.username
     if int(newBid) > objectsInList.price.bid:
         updateBid = Bid(user=request.user, bid=int(newBid))
         updateBid.save()
         objectsInList.price = updateBid
         objectsInList.save()
+
         return render(request, "auctions/newListing.html", {
             "newListing": objectsInList,
             "message": "Bid Recived",
             "update": True,
             "isItemInWatchlist": isItemInWatchlist,
-            "allComments": allComments
+            "allComments": allComments,
+            "isOwner": isOwner
         })
     else:
         return render(request, "auctions/newListing.html", {
@@ -42,7 +67,8 @@ def addBid(request, id):
             "message": "Bid Failed",
             "update": False,
             "isItemInWatchlist": isItemInWatchlist,
-            "allComments": allComments
+            "allComments": allComments,
+            "isOwner": isOwner
         })
 
 
