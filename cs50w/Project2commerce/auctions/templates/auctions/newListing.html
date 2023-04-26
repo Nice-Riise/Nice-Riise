@@ -5,8 +5,18 @@
 
 
 
+<h2 class="text-center" >Bike: {{ newListing.title }}</h2>
 
-<div class="row mx-1">
+<h5 class="text-center" >Current Price: {{ newListing.price.bid }}$</h5>
+
+
+
+
+   <img class="rounded mx-auto d-block" style="width: 30%;" src="{{ newListing.image }}" alt="{{ newListing.title }}">
+   
+
+
+   <div class="text-center" >
     {% if user.is_authenticated %}
         {% if isOwner and newListing.activeStatus %}
         
@@ -32,23 +42,41 @@
 </div>
 
 
-   <h2>Bike: {{ newListing.title }}</h2>
-   <img class="rounded mx-auto d-block" style="width: 30%;" src="{{ newListing.image }}" alt="{{ newListing.title }}">
-   
+
+
+<div class="text-center">
+<h3>You want it?</h3>
+{% if user.is_authenticated %}
+
+<form action="{% url 'addBid' id=newListing.id %}" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="price"></label>
+        <input type="number" min="1" name="newBid" placeholder="Add Bid">
+        <button class="btn btn-info">Add</button>
+        
+    </div>    
+</form>
+
+{% endif %}
+</div>
+
+
+
 
    <div class="container">
         {% if message %}
         {% if update %}
-    <div class="alert alert-success" role="alert"> {{ message }}</div>
+    <div class="alert alert-success text-center " role="alert"> {{ message }}</div>
         {% else %}
-    <div class="alert alert-danger" role="alert"> {{ message }}</div>
+    <div class="alert alert-danger text-center " role="alert"> {{ message }}</div>
         {% endif %}
         {% endif %}
     </div>
    
     
     {% if not newListing.activeStatus and user == newListing.price.user %} 
-    <div class="alert alert-success" role="alert">
+    <div class="alert alert-success text-center" role="alert">
         Congratulations! You Won the Auction!
    
     </div>
@@ -57,26 +85,13 @@
 
    <p>{{ newListing.description }}</p>
    <p>Listed By User: {{ newListing.owner }}</p>
-   <h5>Current Price: {{ newListing.price.bid }}$</h5>
     <br>
-    <h3>You want it?</h3>
-        {% if user.is_authenticated %}
 
-        <form action="{% url 'addBid' id=newListing.id %}" method="POST">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="price"></label>
-                <input type="number" min="1" name="newBid" placeholder="Add Bid">
-                <button class="btn btn-info">Add</button>
-                
-            </div>    
-        </form>
 
-        {% endif %}
+    
+  
 
        
-   
-
 
         <h3>Comments</h3>
         {% if user.is_authenticated %}
@@ -90,7 +105,6 @@
         </form>
 
         {% endif %}
-
 
      <ul class="list-group">
         {% for comment in allComments %}

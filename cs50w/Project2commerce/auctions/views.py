@@ -36,7 +36,7 @@ def endAuction(request, id):
         "allComments": allComments,
         "isOwner": isOwner,
         "update": True,
-        "message": "Congratulations! Your auction is closed"
+        "message": "Your auction is closed"
 
     })
 
