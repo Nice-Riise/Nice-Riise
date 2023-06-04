@@ -25,6 +25,9 @@ function compose_email() {
   document.querySelector('#compose-subject').value = '';
   document.querySelector('#compose-body').value = '';
 }
+function clickedMail(id){
+  console.log(id);
+}
 
 function load_mailbox(mailbox) {
   // Show the mailbox and hide other views
@@ -40,17 +43,26 @@ function load_mailbox(mailbox) {
     .then(emails => {
       // Loop through emails and create a div for each email
       emails.forEach(userEmail => {
+          console.log(userEmail);
         // Create a new email element
         const newEmail = document.createElement('div');
-        newEmail.innerHTML = `
-          <h5>From: ${userEmail.sender}</h5> 
-          <h4>Content: ${userEmail.subject}</h4>
-          <p>${userEmail.timestamp}</p>
-        `;
+          newEmail.className = "list-group-item"; 
+          newEmail.innerHTML = `
+            <h6>From: ${userEmail.sender}</h6> 
+            <h7>Subject: ${userEmail.subject}</h7>
+           <p>${userEmail.timestamp}</p>
+          `;
+          //backround colour change on read/unread
+          //newEmail.classList.add(userEmail.read ? 'read' : 'unread');
+          if (userEmail.read) {
+            newEmail.style.backgroundColor = 'gray';
+          } else {
+            newEmail.style.backgroundColor = 'white';
+          }
 
         // Add click event listener to the newEmail element
         newEmail.addEventListener('click', function() {
-          console.log('This newEmail has been clicked!');
+            clickedMail(userEmail.id)
         });
 
         // Append the newEmail element to the emails-view container
