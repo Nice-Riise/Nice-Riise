@@ -19,20 +19,54 @@ function compose_email() {
   // Show compose view and hide other views
   document.querySelector('#emails-view').style.display = 'none';
   document.querySelector('#compose-view').style.display = 'block';
+  document.querySelector('#emails-info-view').style.display = 'none';
 
   // Clear out composition fields
   document.querySelector('#compose-recipients').value = '';
   document.querySelector('#compose-subject').value = '';
   document.querySelector('#compose-body').value = '';
 }
+
+
 function clickedMail(id){
-  console.log(id);
+  fetch(`/emails/${id}`)
+.then(response => response.json())
+.then(email => {
+    // Print email
+    console.log(email);
+
+    // ... sort the apps ...
+    document.querySelector('#emails-view').style.display = 'none';
+    document.querySelector('#compose-view').style.display = 'none';
+    document.querySelector('#emails-info-view').style.display = 'block';
+    
+    // display email in the view
+    document.querySelector('#emails-info-view').innerHTML = `
+    <h3>From: ${email.sender}</h3>
+    <h4>To: ${email.recipients}</h4>
+    <h5>Subject: ${email.subject}</h5>
+    <h6>Timestamp: ${email.timestamp}</h6>
+    <button class="btn btn-sm btn-outline-primary" id="reply">Reply</button>`;
+
+    // Mark email as read
+    if (!email.read) {
+      fetch(`/emails/${email.id}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            read: true
+        })
+      })
+      
+    }
+});
 }
+
 
 function load_mailbox(mailbox) {
   // Show the mailbox and hide other views
   document.querySelector('#emails-view').style.display = 'block';
   document.querySelector('#compose-view').style.display = 'none';
+  document.querySelector('#emails-info-view').style.display = 'none';
 
   // Show the mailbox name
   document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
@@ -47,6 +81,9 @@ function load_mailbox(mailbox) {
         // Create a new email element
         const newEmail = document.createElement('div');
           newEmail.className = "list-group-item"; 
+          newEmail.id = `email-${userEmail.id}`; 
+
+        // Add innerHTML to the newEmail element
           newEmail.innerHTML = `
             <h6>From: ${userEmail.sender}</h6> 
             <h7>Subject: ${userEmail.subject}</h7>
