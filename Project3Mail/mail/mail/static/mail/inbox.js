@@ -42,11 +42,16 @@ function clickedMail(id){
     
     // display email in the view
     document.querySelector('#emails-info-view').innerHTML = `
-    <h3>From: ${email.sender}</h3>
+    <h4>From: ${email.sender}</h4>
     <h4>To: ${email.recipients}</h4>
     <h5>Subject: ${email.subject}</h5>
-    <h6>Timestamp: ${email.timestamp}</h6>
-    <button class="btn btn-sm btn-outline-primary" id="reply">Reply</button>`;
+    <h6> ${email.timestamp}</h6>
+    <h7>${email.body}</h7>
+    <br>
+    <button class="archiveButton" id="archive_Button">Archive</button>`;
+
+    
+
 
     // Mark email as read
     if (!email.read) {
@@ -56,10 +61,51 @@ function clickedMail(id){
             read: true
         })
       })
-      
-    }
-});
+  }
+
+  
+  // change archive_Button to unarchive
+  document.querySelector('#archive_Button').innerHTML = 'Unarchive';
+  if (email.archived) {
+    document.querySelector('#archive_Button').innerHTML = 'Unarchive';
+  } else {
+    document.querySelector('#archive_Button').innerHTML = 'Archive';
+  }
+
+
+
+       // add/remove mail to/from archive
+
+        document.querySelector('#archive_Button').addEventListener('click', () => {
+          if (email.archived) {
+            fetch(`/emails/${email.id}`, {
+              method: 'PUT',
+              body: JSON.stringify({
+                  archived: false
+              })
+            })
+            .then(() => load_mailbox('archive'))
+          
+          } else {
+            fetch(`/emails/${email.id}`, {
+              method: 'PUT',
+              body: JSON.stringify({
+                  archived: true
+              })
+            })
+            .then(() => load_mailbox('inbox'));
+
+          }
+        });
+  });
+  
 }
+
+
+
+
+
+  
 
 
 function load_mailbox(mailbox) {
