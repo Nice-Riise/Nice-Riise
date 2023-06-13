@@ -43,16 +43,15 @@ function clickedMail(id){
     // display email in the view
     
     document.querySelector('#emails-info-view').innerHTML = `
-    <div class="container">
-    <h4>From: ${email.sender}</h4>
-    <h4>To: ${email.recipients}</h4>
-    <h5>Subject: ${email.subject}</h5>
-    <h6> ${email.timestamp}</h6>
-    <h7>${email.body}</h7>
-    <br>
+    <li class="list-group-item">From: ${email.sender}</li> 
+    <li class="list-group-item">To: ${email.recipients}</li>
+    <li class="list-group-item">Subject: ${email.subject}</li>
+    <li class="list-group-item">${email.timestamp}</li>
+    <li class="list-group-item">${email.body}</li>
+      <br>                                                                   
     <button class="btn btn-sm btn-success" id="archive_Button">Archive</button>
     <button class="btn btn-sm btn-info" id="reply_button">Reply</button>
-    </div>
+    
     `;
 
    
@@ -155,8 +154,24 @@ function load_mailbox(mailbox) {
             <h7>Subject: ${userEmail.subject}</h7>
            <p>${userEmail.timestamp}</p>
           `;
+
+          //textfeild styling only on hover pointer and border
+          newEmail.style.cursor = 'pointer';
+          newEmail.addEventListener('mouseover', function() {
+            newEmail.style.border = '2px solid #3B71CA';
+          });
+          newEmail.addEventListener('mouseleave', function() {
+            newEmail.style.border = 'none';
+          });
+
+          //textfeild box
+          newEmail.style.borderRadius = '10px';
+          newEmail.style.padding = '10px';
+          newEmail.style.margin = '10px';
+
+         
+
           //backround colour change on read/unread
-          //newEmail.classList.add(userEmail.read ? 'read' : 'unread');
           if (userEmail.read) {
             newEmail.style.backgroundColor = 'gray';
           } else {
