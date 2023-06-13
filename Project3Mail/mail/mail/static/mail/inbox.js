@@ -48,9 +48,12 @@ function clickedMail(id){
     <h6> ${email.timestamp}</h6>
     <h7>${email.body}</h7>
     <br>
-    <button class="archiveButton" id="archive_Button">Archive</button>`;
-
+    <button class="archiveButton" id="archive_Button">Archive</button>
+    <button class="replyButton" id="reply_button">Reply</button>
     
+    `;
+
+   
 
 
     // Mark email as read
@@ -65,12 +68,17 @@ function clickedMail(id){
 
   
   // change archive_Button to unarchive
+ // change archive_Button to unarchive
+document.querySelector('#archive_Button').innerHTML = 'Unarchive';
+if (email.archived) {
   document.querySelector('#archive_Button').innerHTML = 'Unarchive';
-  if (email.archived) {
-    document.querySelector('#archive_Button').innerHTML = 'Unarchive';
-  } else {
-    document.querySelector('#archive_Button').innerHTML = 'Archive';
-  }
+  document.querySelector('#archive_Button').classList.remove('btn-success');
+  document.querySelector('#archive_Button').classList.add('btn-danger');
+} else {
+  document.querySelector('#archive_Button').innerHTML = 'Archive';
+  document.querySelector('#archive_Button').classList.remove('btn-danger');
+  document.querySelector('#archive_Button').classList.add('btn-success');
+}
 
 
 
@@ -97,6 +105,14 @@ function clickedMail(id){
 
           }
         });
+        //Reply Button function
+        document.querySelector('#reply_button').addEventListener('click', () => {
+          compose_email();
+          document.querySelector('#compose-recipients').value = email.sender;
+          document.querySelector('#compose-subject').value = `Re: ${email.subject}`;
+          document.querySelector('#compose-body').value = `On ${email.timestamp} ${email.sender} wrote: ${email.body}`;
+        });
+        
   });
   
 }
