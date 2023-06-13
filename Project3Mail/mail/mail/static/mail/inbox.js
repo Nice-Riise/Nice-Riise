@@ -41,16 +41,18 @@ function clickedMail(id){
     document.querySelector('#emails-info-view').style.display = 'block';
     
     // display email in the view
+    
     document.querySelector('#emails-info-view').innerHTML = `
+    <div class="container">
     <h4>From: ${email.sender}</h4>
     <h4>To: ${email.recipients}</h4>
     <h5>Subject: ${email.subject}</h5>
     <h6> ${email.timestamp}</h6>
     <h7>${email.body}</h7>
     <br>
-    <button class="archiveButton" id="archive_Button">Archive</button>
-    <button class="replyButton" id="reply_button">Reply</button>
-    
+    <button class="btn btn-sm btn-success" id="archive_Button">Archive</button>
+    <button class="btn btn-sm btn-info" id="reply_button">Reply</button>
+    </div>
     `;
 
    
@@ -69,15 +71,15 @@ function clickedMail(id){
   
   // change archive_Button to unarchive
  // change archive_Button to unarchive
-document.querySelector('#archive_Button').innerHTML = 'Unarchive';
-if (email.archived) {
-  document.querySelector('#archive_Button').innerHTML = 'Unarchive';
-  document.querySelector('#archive_Button').classList.remove('btn-success');
-  document.querySelector('#archive_Button').classList.add('btn-danger');
+    document.querySelector('#archive_Button').innerHTML = 'Unarchive';
+  if (email.archived) {
+    document.querySelector('#archive_Button').innerHTML = 'Unarchive';
+    document.querySelector('#archive_Button').classList.remove('btn-success');
+    document.querySelector('#archive_Button').classList.add('btn-danger');
 } else {
-  document.querySelector('#archive_Button').innerHTML = 'Archive';
-  document.querySelector('#archive_Button').classList.remove('btn-danger');
-  document.querySelector('#archive_Button').classList.add('btn-success');
+    document.querySelector('#archive_Button').innerHTML = 'Archive';
+    document.querySelector('#archive_Button').classList.remove('btn-danger');
+    document.querySelector('#archive_Button').classList.add('btn-success');
 }
 
 
@@ -93,6 +95,8 @@ if (email.archived) {
               })
             })
             .then(() => load_mailbox('archive'))
+            
+
           
           } else {
             fetch(`/emails/${email.id}`, {
@@ -106,17 +110,16 @@ if (email.archived) {
           }
         });
         //Reply Button function
-        document.querySelector('#reply_button').addEventListener('click', () => {
-          compose_email();
+          document.querySelector('#reply_button').addEventListener('click', () => {
+        compose_email();
+        
           document.querySelector('#compose-recipients').value = email.sender;
           document.querySelector('#compose-subject').value = `Re: ${email.subject}`;
           document.querySelector('#compose-body').value = `On ${email.timestamp} ${email.sender} wrote: ${email.body}`;
-        });
-        
+        });  
   });
   
 }
-
 
 
 
@@ -143,8 +146,9 @@ function load_mailbox(mailbox) {
         // Create a new email element
         const newEmail = document.createElement('div');
           newEmail.className = "list-group-item"; 
-          newEmail.id = `email-${userEmail.id}`; 
+          newEmail.id = `email-${userEmail.id}`;
 
+          
         // Add innerHTML to the newEmail element
           newEmail.innerHTML = `
             <h6>From: ${userEmail.sender}</h6> 
