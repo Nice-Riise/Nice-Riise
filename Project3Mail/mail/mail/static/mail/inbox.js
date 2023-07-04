@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('#sent').addEventListener('click', () => load_mailbox('sent'));
   document.querySelector('#archived').addEventListener('click', () => load_mailbox('archive'));
   document.querySelector('#compose').addEventListener('click', compose_email);
+  
 
 
   // Send mail 
@@ -67,47 +68,38 @@ function clickedMail(id){
       })
   }
 
-  
-  // change archive_Button to unarchive
- // change archive_Button to unarchive
+   // archive button change to unarchive when mail is in archive
+   if (email.archived) {
+    document.querySelector('#archive_Button').className = 'btn btn-sm btn-danger';
     document.querySelector('#archive_Button').innerHTML = 'Unarchive';
-  if (email.archived) {
-    document.querySelector('#archive_Button').innerHTML = 'Unarchive';
-    document.querySelector('#archive_Button').classList.remove('btn-success');
-    document.querySelector('#archive_Button').classList.add('btn-danger');
-} else {
+  } else {
+    
     document.querySelector('#archive_Button').innerHTML = 'Archive';
-    document.querySelector('#archive_Button').classList.remove('btn-danger');
-    document.querySelector('#archive_Button').classList.add('btn-success');
-}
+    
+  }
 
 
 
-       // add/remove mail to/from archive
-
+       // add mail 
         document.querySelector('#archive_Button').addEventListener('click', () => {
-          if (email.archived) {
-            fetch(`/emails/${email.id}`, {
-              method: 'PUT',
-              body: JSON.stringify({
-                  archived: false
-              })
+          fetch(`/emails/${email.id}`, {
+            method: 'PUT',
+            body: JSON.stringify({
+                archived: !email.archived
             })
-            .then(() => load_mailbox('archive'))
-            
-
+          })
           
-          } else {
-            fetch(`/emails/${email.id}`, {
-              method: 'PUT',
-              body: JSON.stringify({
-                  archived: true
-              })
-            })
-            .then(() => load_mailbox('inbox'));
-
-          }
+          .then(() => load_mailbox('inbox'))
+          
         });
+       
+      
+
+      
+  
+ 
+  
+
         //Reply Button function
           document.querySelector('#reply_button').addEventListener('click', () => {
         compose_email();
@@ -118,9 +110,8 @@ function clickedMail(id){
         });  
   });
   
+  
 }
-
-
 
 
   
